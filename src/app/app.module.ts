@@ -1,34 +1,24 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AppRoutingModule } from './app-routing/app-routing.module'
-import { SigninComponent } from './signin/signin.component'
-import { HomeComponent } from './home/home.component'
+import { AppRoutingModule } from './app-routing.module'
+import { SigninModule } from './signin/signin.module'
+import { HomeModule } from './home/home.module'
 import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    SigninComponent
+    NavbarComponent   
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    MaterialModule,
-    FlexLayoutModule,
-    BrowserAnimationsModule,
-    AppRoutingModule
+    HomeModule,
+    AppRoutingModule,
+    SharedModule,
+    SigninModule
   ],
   bootstrap: [AppComponent]
 })
