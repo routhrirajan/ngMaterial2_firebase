@@ -1,10 +1,18 @@
-<div class="mat-button mat-primary">         
+<div>
     <md-tab-group>
-  <md-tab label="Tab 1">Content 1</md-tab>
-  <md-tab label="Tab 2">Content 2</md-tab>
-  <md-tab label="Tab 1">Content 1</md-tab>
-  <md-tab label="Tab 2">Content 2</md-tab>
-</md-tab-group>
-    </div>
-<app-link-list [links]="links">
-</app-link-list>
+        <md-tab label="All">
+            <app-link-list [links]="links">
+            </app-link-list>
+        </md-tab>
+        <md-tab label="e-ticketing">
+            <app-link-list [links]="links">
+            </app-link-list>
+        </md-tab>
+        <md-tab label="government">Content 1</md-tab>
+        <md-tab label="finance">Content 2</md-tab>
+        <md-tab label="Tab 1">Content 1</md-tab>
+        <md-tab label="Tab 2">Content 2</md-tab>
+        <md-tab label="Tab 1">Content 1</md-tab>
+        <md-tab label="Tab 2">Content 2</md-tab>
+    </md-tab-group>
+</div>
