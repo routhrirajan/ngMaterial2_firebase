@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule, MdIconRegistry } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
@@ -32,12 +33,13 @@ import { AnimationsService } from './animations/animations.service';
     RouterModule,
     AuthenticationModule.forRoot(),
     MaterialModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MomentModule,
-    Ng2Webstorage,
+    Ng2Webstorage,    
   ],
   providers: [
     MdIconRegistry,
@@ -51,6 +53,7 @@ import { AnimationsService } from './animations/animations.service';
     RouterModule,
     AuthenticationModule,
     MaterialModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     AngularFireModule,
     MomentModule,

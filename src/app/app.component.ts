@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, Directive } from '@angular/core';
+import { SidebarComponent } from "app/layout/sidebar";
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  isDarkTheme = false;
+  isDarkTheme: boolean = true;
+  @ViewChild(SidebarComponent) sidebar: SidebarComponent;
+  onThemeChange(status:boolean){   
+    this.isDarkTheme = status;
+  }
+  toggleSidebar() {    
+    this.sidebar.sidenav.open();
+  } 
+  closeSidebar(){
+    this.sidebar.sidenav.close();
+  }
 }

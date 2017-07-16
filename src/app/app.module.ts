@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 
 import { SharedModule } from './shared/shared.module';
-
+import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module'
 import { SigninModule } from './signin/signin.module'
 import { HomeModule } from './home/home.module'
@@ -11,14 +10,14 @@ import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent   
+    AppComponent,           
   ],
   imports: [
     HomeModule,
     AppRoutingModule,
     SharedModule,
-    SigninModule
+    SigninModule,
+    LayoutModule
   ],
   bootstrap: [AppComponent]
 })

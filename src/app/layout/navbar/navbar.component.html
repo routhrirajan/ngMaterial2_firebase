@@ -1,0 +1,18 @@
+<md-toolbar color="primary" class="toolbar">
+  <button md-icon-button (click)="onOpenSidebar()">
+    <md-icon>menu</md-icon>
+  </button>
+  <span fxHide.xs>RCS Seva</span>
+  <span fxHide.xs fxFlex></span>
+  <a md-icon-button [routerLink]="['/home']" routerLinkActive="active">
+    <md-icon>home</md-icon>
+  </a>
+  <a md-button [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>
+  <button md-icon-button [mdMenuTriggerFor]="themeMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
+
+</md-toolbar>
+<md-menu #themeMenu x-position="before">
+  <button md-menu-item (click)="onThemeChange()">Toggle Theme</button>
+</md-menu>
