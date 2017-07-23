@@ -9,6 +9,7 @@ export class NavbarComponent implements OnInit {
 @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
 @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 @Input() isDarkTheme:boolean;
+toggleSidebarStatus: boolean = false;
 
   constructor() {    
    }
@@ -19,7 +20,8 @@ export class NavbarComponent implements OnInit {
     this.notify.emit(this.isDarkTheme);
   }  
   onOpenSidebar(){
-    this.toggleSidebar.emit();
+    this.toggleSidebarStatus = !this.toggleSidebarStatus;
+    this.toggleSidebar.emit(this.toggleSidebarStatus);
   }
   
 }

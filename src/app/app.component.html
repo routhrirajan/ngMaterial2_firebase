@@ -1,8 +1,18 @@
-<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">        
-    <md-sidenav-container fullscreen>
-        <div><app-sidebar></app-sidebar></div>
-        <div class="my-content"  >
-        <app-navbar [isDarkTheme]= 'isDarkTheme' (notify)='onThemeChange($event)' (toggleSidebar)="toggleSidebar()"></app-navbar>        
-        <router-outlet (click)="closeSidebar()"></router-outlet></div>
-    </md-sidenav-container>
+<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
+    <header>
+        <app-navbar [isDarkTheme]='isDarkTheme' (notify)='onThemeChange($event)' (toggleSidebar)="toggleSidebar($event)"></app-navbar>
+    </header>
+    <article [class.animation-content-out]="activateAnimation" [class.animation-content-in]="!activateAnimation">
+        <md-sidenav-container>
+            <div id="mySidenav" class="sidenav">
+                <router-outlet name="sidebar"></router-outlet>
+            </div>
+            <div id="main">
+                <router-outlet></router-outlet>                
+            </div>
+        </md-sidenav-container>
+    </article>
+    <footer>
+        <router-outlet name="footer"></router-outlet>
+    </footer>
 </div>

@@ -1,3 +1,31 @@
-<p>
-  Most of the application has sign in page and so this :)
-</p>
+<div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div>
+    <md-toolbar color="primary"><h1>Sign In</h1></md-toolbar>
+    <md-card>      
+      <form (ngSubmit)="onSubmit(signInForm)" novalidate [formGroup]="signInForm">
+        <div fxLayout="column" fxLayoutGap="8px">         
+          <md-input-container>            
+            <input mdInput type="email" formControlName="email">
+            <md-placeholder><md-icon>account_box</md-icon> User Name</md-placeholder>
+            <md-error *ngIf="signInForm.get('email').hasError('pattern') && signInForm.get('email').touched">
+              Please enter a valid email address
+            </md-error>
+            <md-error *ngIf="signInForm.get('email').hasError('required') && signInForm.get('email').touched">
+              User Name is <strong>required</strong>
+            </md-error>
+          </md-input-container>    
+           <md-input-container>
+            <input mdInput type="password" formControlName="password">
+            <md-placeholder><md-icon>lock</md-icon> Password</md-placeholder>
+            <md-error *ngIf="signInForm.get('password').hasError('required') && signInForm.get('password').touched">
+              Password is <strong>required</strong>
+            </md-error>            
+          </md-input-container>              
+        </div>
+        <md-dialog-actions align="end">          
+          <button md-raised-button color="primary" [disabled]="signInForm.invalid">Sign In</button>
+        </md-dialog-actions>
+      </form>
+    </md-card>      
+  </div>
+</div>

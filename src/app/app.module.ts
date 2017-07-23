@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module'
 import { SigninModule } from './signin/signin.module'
 import { HomeModule } from './home/home.module'
+import { EnquireModule } from './enquire/enquire.module'
 import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent,           
+    AppComponent             
   ],
   imports: [
     HomeModule,
     AppRoutingModule,
     SharedModule,
     SigninModule,
-    LayoutModule
+    LayoutModule,
+    EnquireModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Directive } from '@angular/core';
-import { SidebarComponent } from "app/layout/sidebar";
+import { AnimationsService } from './shared/animations/index';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,16 +8,33 @@ import { SidebarComponent } from "app/layout/sidebar";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  isDarkTheme: boolean = true;
-  @ViewChild(SidebarComponent) sidebar: SidebarComponent;
-  onThemeChange(status:boolean){   
+  public activateAnimation = false;
+
+  /**
+   * Constructor of the class
+   *
+   * @param {AnimationsService} animationService
+   */
+  public constructor(
+    private animationService: AnimationsService
+  ) 
+  {
+    this.animationService.activateAnimation$.subscribe(
+      (value) => this.activateAnimation = value
+    );
+  }
+  isDarkTheme: boolean = true;  
+  onThemeChange(status: boolean) {
     this.isDarkTheme = status;
   }
-  toggleSidebar() {    
-    this.sidebar.sidenav.open();
-  } 
-  closeSidebar(){
-    this.sidebar.sidenav.close();
-  }
+  toggleSidebar(status: boolean) {
+    if (status) {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    else {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  }  
 }

@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { SidebarComponent } from './index' 
 
 @NgModule({
   imports: [
-    CommonModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: SidebarComponent,
+        outlet: 'sidebar',
+      },
+    ]),
   ],
-  declarations: []
+  exports: [
+    RouterModule,
+  ],
 })
 export class SidebarRoutingModule { }
