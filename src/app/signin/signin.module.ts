@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import { SigninComponent } from './index';
+import { SigninComponent, SigninService } from './index';
 import { SigninRoutingModule } from './signin-routing.module';
 
 @NgModule({
@@ -15,6 +15,9 @@ import { SigninRoutingModule } from './signin-routing.module';
   exports: [
     SigninComponent,
   ],
+  providers:[
+    SigninService
+  ]
 })
 
 export class SigninModule { }

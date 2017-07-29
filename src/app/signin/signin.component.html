@@ -1,11 +1,11 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
-  <div>
+  <div class="login">
     <md-toolbar color="primary"><h1>Sign In</h1></md-toolbar>
     <md-card>      
       <form (ngSubmit)="onSubmit(signInForm)" novalidate [formGroup]="signInForm">
         <div fxLayout="column" fxLayoutGap="8px">         
           <md-input-container>            
-            <input mdInput type="email" formControlName="email">
+            <input mdInput #email type="text" formControlName="email">
             <md-placeholder><md-icon>account_box</md-icon> User Name</md-placeholder>
             <md-error *ngIf="signInForm.get('email').hasError('pattern') && signInForm.get('email').touched">
               Please enter a valid email address
