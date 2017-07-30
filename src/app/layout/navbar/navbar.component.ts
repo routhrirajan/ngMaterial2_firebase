@@ -16,7 +16,7 @@ toggleSidebarStatus: boolean = false;
 isLoggedIn: boolean = false;
   constructor(
     private _angularFire: AngularFireAuth,
-    private _signinService: SigninService
+    public _signinService: SigninService
   ) {    
    }  
   onThemeChange(){  
