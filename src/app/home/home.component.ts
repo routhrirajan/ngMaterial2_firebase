@@ -5,7 +5,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 import { ILinkItem } from './interfaces/';
 import { Animations, AnimationsService } from '../shared/';
 import { MdDialog, MdSnackBar } from '@angular/material'
-import { EnquireComponent, IEnquireUser } from '../enquire/index'
+import { EnquireComponent, IEnquireUser, EnquiryService } from '../enquire/index'
 
 
 @Component({
@@ -14,7 +14,7 @@ import { EnquireComponent, IEnquireUser } from '../enquire/index'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent extends Animations implements OnInit{
-enquireUsers: IEnquireUser[] = [];;
+//enquireUsers: IEnquireUser[] = [];;
  public links: FirebaseListObservable<ILinkItem[]>;
 
   /**
@@ -27,7 +27,8 @@ enquireUsers: IEnquireUser[] = [];;
     protected animationsService: AnimationsService,
     private activatedRoute: ActivatedRoute,
     private enquireDialog : MdDialog,
-    private snackbar : MdSnackBar
+    private snackbar : MdSnackBar,
+    private _enquiryService: EnquiryService
   ) {
     super(animationsService);
   }
@@ -40,9 +41,8 @@ enquireUsers: IEnquireUser[] = [];;
   openEnquireDialog(){
     this.enquireDialog.open(EnquireComponent).afterClosed()
     .filter(result => !!result)
-    .subscribe(enquireUser => {
-      this.enquireUsers.push(enquireUser.value);
-      console.log(this.enquireUsers);
+    .subscribe(enquireUser => {      
+      this._enquiryService.addEnquiry(enquireUser.value);      
       this.snackbar.open(
        "Your enquiry has been submitted. Our representative will call you shortly",
        "OK",
