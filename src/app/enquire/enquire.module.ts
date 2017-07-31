@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module'
-import { EnquireComponent } from './enquire.component';
+import { EnquireComponent, EnquiryService } from './index';
 
 @NgModule({
     imports: [
@@ -16,6 +16,6 @@ import { EnquireComponent } from './enquire.component';
     entryComponents:[
         EnquireComponent
     ],
-    providers: [],
+    providers: [EnquiryService],
 })
 export class EnquireModule{}

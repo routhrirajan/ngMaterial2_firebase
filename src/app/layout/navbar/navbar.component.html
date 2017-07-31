@@ -7,7 +7,9 @@
   <a md-icon-button [routerLink]="['/home']" routerLinkActive="active">
     <md-icon>home</md-icon>
   </a>
-  <a md-button [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>  
+  <h1 *ngIf="_signinService.user | async">Welcome {{ (_signinService.user | async)?.email }} !</h1>
+  <a md-button *ngIf="!(_signinService.user | async)" [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>  
+  <a md-button *ngIf="(_signinService.user | async)" (click)="logout()" routerLinkActive="active">Signout</a>  
   <button md-icon-button [mdMenuTriggerFor]="themeMenu">
       <md-icon>more_vert</md-icon>
     </button>
