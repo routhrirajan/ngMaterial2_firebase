@@ -29,9 +29,9 @@ export class LinksResolver implements Resolve<any> {
     ): Promise<FirebaseListObservable<ILinkItem[]>> {
         
         if (localStorage.getItem("uid"))
-            this.links = this.angularFire.list('/links');
+            this.links = this.angularFire.list('/links');       
         else
-            this.links = this.angularFire.list('/links');
+            this.links = this.angularFire.list('/dummylinks');
 
         return new Promise((resolve, reject) => {
             this.links.subscribe(() => resolve(this.links), reject);
