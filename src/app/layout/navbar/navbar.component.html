@@ -7,14 +7,30 @@
   <a md-icon-button [routerLink]="['/home']" routerLinkActive="active">
     <md-icon>home</md-icon>
   </a>
-  <h1 *ngIf="_signinService.user | async">Welcome {{ (_signinService.user | async)?.email }} !</h1>
+  <span *ngIf="_signinService.user | async">Hey, {{ (_signinService.user | async)?.email }}</span>
   <a md-button *ngIf="!(_signinService.user | async)" [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>  
   <a md-button *ngIf="(_signinService.user | async)" (click)="logout()" routerLinkActive="active">Signout</a>  
-  <button md-icon-button [mdMenuTriggerFor]="themeMenu">
+ 
+  <button *ngIf="_signinService.user | async" md-icon-button [mdMenuTriggerFor]="themeMenu">
       <md-icon>more_vert</md-icon>
     </button>
 
 </md-toolbar>
 <md-menu #themeMenu x-position="before">
-  <button md-menu-item (click)="onThemeChange()">Toggle Theme</button>
+  <button md-menu-item (click)="onThemeChange()">
+    <md-icon>invert_colors</md-icon>
+    <span>Toggle Theme</span>
+  </button>
+  <button md-menu-item [routerLink]="['/users']" routerLinkActive="active">
+    <md-icon>account_circle</md-icon>
+    <span>Manage Users</span>
+  </button>
+  <button md-menu-item [routerLink]="['/links']" routerLinkActive="active">
+    <md-icon>link</md-icon>
+    <span>Manage Links</span>
+  </button>
+  <button md-menu-item [routerLink]="['/categories']" routerLinkActive="active">
+    <md-icon>playlist_add</md-icon>
+    <span>Manage Categories</span>
+  </button>
 </md-menu>

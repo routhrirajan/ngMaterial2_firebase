@@ -1,6 +1,17 @@
+// These rules require authentication
 {
   "rules": {
-    ".read": true,
-    ".write": true
-  }
+    	"dummylinks":{
+    	".read": true,
+    	".write":"auth != null"
+  		},
+  		"links":{
+    	".read": "auth != null",
+    	".write": "auth != null"
+  		},
+      "enquiry":{
+    	".read": "auth != null",
+    	".write": "auth != null"
+    	}
+		}
 }
