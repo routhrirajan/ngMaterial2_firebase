@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SigninService, IUser } from './index'
+import { SigninService } from './index'
+import { IUser } from './interfaces/user.interface'
 import { Router } from '@angular/router'
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
