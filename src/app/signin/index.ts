@@ -1,3 +1,3 @@
 export * from './signin.component'
 export * from './services/'
-export * from './interfaces/'
+export * from './interfaces'
