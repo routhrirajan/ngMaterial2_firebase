@@ -1,6 +1,8 @@
 // These rules require authentication
 {
   "rules": {
+		".read": true,
+    ".write": false,
     	"dummylinks":{
     	".read": true,
     	".write":"auth != null"

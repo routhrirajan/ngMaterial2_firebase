@@ -4,6 +4,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { environment } from 'environments/environment';
 import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationService } from './authentication.service'
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -20,7 +21,8 @@ export class AuthenticationModule {
     return {
       ngModule: AuthenticationModule,
       providers: [
-        AuthenticationGuard
+        AuthenticationGuard,
+        AuthenticationService
       ]
     };
   }
