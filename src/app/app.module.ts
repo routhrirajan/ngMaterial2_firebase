@@ -3,15 +3,18 @@ import {NgModule} from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module'
-import { SigninModule } from './signin/signin.module'
-import { HomeModule } from './home/home.module'
-import { EnquireModule } from './enquire/enquire.module'
+import { AppRoutingModule } from './app-routing.module';
+import { SigninModule } from './signin/signin.module';
+import { HomeModule } from './home/home.module';
+import { EnquireModule } from './enquire/enquire.module';
+import { CategoriesModule } from './categories/categories.module';
+import { UsersModule } from './users/users.module';
+import { LinksModule } from './links/links.module';
 import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent             
+    AppComponent,              
   ],
   imports: [
     HomeModule,
@@ -19,7 +22,10 @@ import 'hammerjs';
     SharedModule,
     SigninModule,
     LayoutModule,
-    EnquireModule
+    EnquireModule,
+    CategoriesModule,
+    UsersModule,
+    LinksModule
   ],
   bootstrap: [AppComponent]
 })

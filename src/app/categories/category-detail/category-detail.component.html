@@ -1,0 +1,26 @@
+<h3>Manage Category</h3>
+<form (ngSubmit)="categoryDialogRef.close(categoryForm)" novalidate [formGroup]="categoryForm">
+  <div fxLayout="column" fxLayoutGap="8px">
+    <md-input-container>
+      <input mdInput type="text" placeholder="Name" formControlName="name">
+      <md-error *ngIf="categoryForm.get('name').hasError('required') && categoryForm.get('name').touched">
+        Name is <strong>required</strong>
+      </md-error>
+      <md-error *ngIf="categoryForm.get('name').hasError('minlength') && categoryForm.get('name').touched">
+        Name must have minimum<strong> 3 characters </strong>
+      </md-error>
+    </md-input-container>      
+     <md-input-container>
+     <input mdInput type="text" placeholder="Description" formControlName="description">     
+    </md-input-container>    
+     <section>
+      <md-slide-toggle mdInput formControlName="active">
+        Status
+      </md-slide-toggle>
+     </section>  
+  </div>
+  <md-dialog-actions align="end">
+    <button md-button type="button" (click)="categoryDialogRef.close()">Cancel</button>
+    <button md-button color="accent" [disabled]="categoryForm.invalid">Submit</button>
+  </md-dialog-actions>
+</form>
