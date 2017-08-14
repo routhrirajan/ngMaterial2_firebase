@@ -20,5 +20,5 @@ after_success:
 
 notifications:
   email:
-    on_failure: change
-    on_success: change
+    on_failure: routhrimanjore@yahoo.com
+    on_success: routhrimanjore@yahoo.com
