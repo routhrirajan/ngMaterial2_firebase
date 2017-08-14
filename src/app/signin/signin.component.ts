@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChildren, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { IUser } from './interfaces';
+import { IUser } from './Interfaces';
 import { SigninService } from './services/signin.service'
 
 
