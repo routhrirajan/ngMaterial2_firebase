@@ -1,3 +1,3 @@
-export * from './enquire.component'
-export * from './interfaces/index'
-export * from './services/'
+export * from './enquire.component';
+export * from './Interfaces';
+export * from './services/';
