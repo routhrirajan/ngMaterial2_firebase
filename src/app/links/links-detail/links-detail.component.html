@@ -1,0 +1,34 @@
+<h3>Manage Links</h3>
+<form (ngSubmit)="onSubmit()" novalidate [formGroup]="linksForm">
+  <div fxLayout="column" fxLayoutGap="8px">
+    <md-input-container>
+      <input mdInput type="text" placeholder="Name" formControlName="name" >
+      <md-error *ngIf="linksForm.get('name').hasError('required') && linksForm.get('name').touched">
+        Name is <strong>required</strong>
+      </md-error>
+      <md-error *ngIf="linksForm.get('name').hasError('minlength') && linksForm.get('name').touched">
+        Name must have minimum<strong> 3 characters </strong>
+      </md-error>                
+    </md-input-container>      
+     <section>
+     <input type="file" placeholder="image" formControlName="image">     
+     </section>
+    <md-input-container>
+        <input mdInput type="url" placeholder="url" formControlName="url">     
+    </md-input-container>
+    <md-select formControlName="category" placeholder="Select Category">
+        <md-option *ngFor="let category of categories | async" [value]="category.name">
+            {{category.name}}
+        </md-option>
+    </md-select>    
+     <section>
+      <md-slide-toggle mdInput formControlName="status">
+        Status
+      </md-slide-toggle>
+     </section>  
+  </div>
+  <md-dialog-actions align="end">
+    <button md-button type="button" [routerLink]="['/links']">Cancel</button>
+    <button md-button color="accent" [disabled]="linksForm.invalid">Submit</button>
+  </md-dialog-actions>
+</form>

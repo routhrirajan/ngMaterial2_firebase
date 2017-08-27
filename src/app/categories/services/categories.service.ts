@@ -9,17 +9,17 @@ export class CategoriesService {
 
   categories: FirebaseListObservable<ICategories[]> = null; //  list of objects
   category: FirebaseObjectObservable<ICategories> = null; //   single object
+  exists;
 
   constructor(private db: AngularFireDatabase) { 
     this.categories = this.db.list(`${this.basePath}`);
   }
 
-
   // Return an observable list with optional query
   // You will usually call this from OnInit in a component
   getCategoriesList(query={}): FirebaseListObservable<ICategories[]> {
     this.categories = this.db.list(`${this.basePath}`, {
-      query: query
+      query: query,      
     });
     return this.categories;
   }
@@ -30,21 +30,32 @@ export class CategoriesService {
     this.category = this.db.object(categoryPath)
     return this.category
   }
+
   // Return a single observable category
-  checkIfCategoryExists(name: string): boolean {
-    const categoryPath =  `${this.basePath}/${name}`;
-    this.category = this.db.object(categoryPath)
-    return this.category == null ? false: true;
+  checkIfCategoryExists(name: string): any {
+    name = name.toLowerCase();    
+    const categoryPath =  `${this.basePath}`;
+     this.categories = this.db.list(categoryPath, {
+       query: {
+        orderByChild: 'name',
+        equalTo: name
+       },
+       preserveSnapshot: true
+     });
+     this.categories.subscribe(snapshot => {       
+      this.exists = snapshot.length > 0 ? { validCategory : {
+        valid: false
+      }} : null              
+     })     
+     //console.log(this.exists);
+     return this.exists;    
   }
 
-
   // Create a brand new category
-  createCategory(category: ICategories): void  {
-    if(this.checkIfCategoryExists(category.name))
+  createCategory(category: ICategories): void  {    
     this.categories.push(category)
       .catch(error => this.handleError(error))
   }
-
 
   // Update an exisiting item
   updateCategory(key: string, value: any): void {
@@ -63,8 +74,6 @@ export class CategoriesService {
       this.categories.remove()
         .catch(error => this.handleError(error))
   }
-
-
   // Default error handling for all actions
   private handleError(error) {
     console.log(error)
