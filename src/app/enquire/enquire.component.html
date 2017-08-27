@@ -11,13 +11,17 @@
       </md-error>
     </md-input-container>
     <md-input-container>
-      <input mdInput type="email" placeholder="E-mail" formControlName="email">
+      <input mdInput asyncValidator type="email" placeholder="E-mail" formControlName="email">
       <md-error *ngIf="enquiryForm.get('email').hasError('pattern') && enquiryForm.get('email').touched">
         Please enter a valid email address
       </md-error>
       <md-error *ngIf="enquiryForm.get('email').hasError('required') && enquiryForm.get('email').touched">
         Email is <strong>required</strong>
       </md-error>
+      <md-error *ngIf="enquiryForm.get('email').hasError('asyncInvalid') && enquiryForm.get('email').touched">
+        Email is <strong>already registered</strong>
+      </md-error>
+      
     </md-input-container>
     <md-input-container>
       <input mdInput type="tel" placeholder="Mobile" formControlName="mobile">

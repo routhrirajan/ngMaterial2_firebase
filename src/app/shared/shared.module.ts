@@ -16,10 +16,9 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import 'hammerjs';
 
 import { AuthenticationModule } from './authentication/authentication.module';
-import { Directives } from './directives/';
+import { Directives} from './directives/';
 import { environment } from 'environments/environment';
 import { AnimationsService } from './animations/animations.service';
-
 
 @NgModule({
   declarations: [

@@ -1,12 +1,12 @@
-<md-card>
+<md-card *ngFor="let category of categories | async">
     <md-card-header>
-        <md-card-title>Title</md-card-title>        
-        <md-card-subtitle>Subtitle</md-card-subtitle>
+        <md-card-title>{{category.name}}</md-card-title>        
+        <md-card-subtitle>{{category.description}}</md-card-subtitle>
         <span fxFlex></span> 
-        <button md-icon-button >
+        <button md-icon-button (click)="editCategory(category)" >
           <md-icon class="md-24">mode_edit</md-icon>
         </button>
-        <button md-icon-button >
+        <button md-icon-button (click)="deleteCategory(category.$key)">
           <md-icon class="md-24">delete</md-icon>
         </button>
     </md-card-header>   
