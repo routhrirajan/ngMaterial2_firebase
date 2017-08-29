@@ -1,8 +1,8 @@
-<div fxLayout="row" fxLayoutGap="10px" class="gap">
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
   <md-card *ngFor="let link of links | async">    
    <a *ngIf="link.url != null" target="_blank" [href]="link.url">
     <md-card-content>
-    <img md-card-image [src]="link.image">
+    <img md-card-image [src]="link.image == '' ? 'assets/images/no-image-found.jpg' : link.image">
     </md-card-content>
    </a>
   <a *ngIf="link.url == null" [routerLink]="['/signin']">
@@ -15,7 +15,7 @@
       <md-icon>favorite_border</md-icon>
     </button> 
     <a *ngIf="link.url != null" md-button target="_blank" [href]="link.url">{{link.name}}</a>
-    <a *ngIf="link.url == null" md-button [routerLink]="['/signin']">{{link.name}}</a>
+    <a *ngIf="link.url == null" md-button [routerLink]="['/signin']">{{link.name}}</a>    
   </md-card-footer>
   </md-card>  
 </div>
