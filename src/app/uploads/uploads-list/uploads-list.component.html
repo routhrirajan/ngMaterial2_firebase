@@ -1,0 +1,14 @@
+<h3>File Uploads</h3>
+<upload-form></upload-form>
+<hr>
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
+    <div *ngFor="let upload of uploads | async">
+        <upload-detail [upload]='upload'></upload-detail>
+      </div>
+</div>
+
+<md-spinner mode="indeterminate" *ngIf="showSpinner"></md-spinner>
+
+
+
+

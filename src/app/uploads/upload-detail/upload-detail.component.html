@@ -1,0 +1,12 @@
+<md-card>       
+    <md-card-content>        
+        <img md-card-image [src]="upload.url">        
+    </md-card-content>      
+    <md-card-footer align="end">
+        {{upload.name}}
+            <button md-icon-button color="accent" (click)='deleteUpload(upload)'>
+                    <md-icon>delete</md-icon>    
+                </button> 
+    </md-card-footer>
+</md-card>
+

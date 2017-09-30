@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const appRoutes = [
+const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
   },
+  //{ path: 'uploads', loadChildren: "./uploads/shared/upload.module#UploadModule" }
 ];
 
 @NgModule({

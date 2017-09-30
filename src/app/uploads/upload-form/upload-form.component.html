@@ -1,0 +1,38 @@
+<div *ngIf="currentUpload">   
+    <md-progress-bar [color]="accent" [mode]="determinate" [value]="currentUpload?.progress">
+    </md-progress-bar>
+    Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+</div>
+
+
+<div class="box">
+
+  <!-- <h3>Single File Upload</h3>
+
+    <label>
+       <input type="file" class="button" (change)="detectFiles($event)">
+    </label>
+
+    <button md-raised-button color="primary"
+            [disabled]="!selectedFiles"
+            (click)="uploadSingle()">
+
+      Upload Single
+    </button> -->
+
+
+
+    <!-- <h3>Multiple File Upload</h3> -->
+
+    <label>
+       <input type="file" class="button" (change)="detectFiles($event)" multiple>
+    </label>
+
+
+      <button md-raised-button color="primary"
+              [disabled]="!selectedFiles"
+              (click)="uploadMulti()">
+
+        Upload Multiple
+      </button>
+</div>
