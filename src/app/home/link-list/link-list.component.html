@@ -2,7 +2,7 @@
   <md-card *ngFor="let link of links | async">    
    <a *ngIf="link.url != null" target="_blank" [href]="link.url">
     <md-card-content>
-    <img md-card-image [src]="link.image == '' ? 'assets/images/no-image-found.jpg' : link.image">
+    <img md-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
     </md-card-content>
    </a>
   <a *ngIf="link.url == null" [routerLink]="['/signin']">

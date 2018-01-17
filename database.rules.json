@@ -18,6 +18,10 @@
       "categories":{
     	".read": "auth != null",
     	".write": "auth != null"
+    	},
+      "uploads":{
+    	".read": "auth != null",
+    	".write": "auth != null"
     	}
 		}
 }

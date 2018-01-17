@@ -9,7 +9,7 @@ import { CategoryDetailComponent } from '../category-detail'
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit, OnDestroy {
-  categories : any;
+  categories: any;
   constructor(
     public _categoriesService: CategoriesService,
     private _snackBar: MdSnackBar,
@@ -17,34 +17,32 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
   ){ }
 
   ngOnInit() {
-    console.log("ngOnInit fired!");
-    this.categories = this._categoriesService.getCategoriesList();    
+    console.log('ngOnInit fired!');
+    this.categories = this._categoriesService.getCategoriesList();
   }
 
   ngOnDestroy() {
-    console.log("ngOnDestroy fired!");
+    console.log('ngOnDestroy fired!');
   }
-  deleteCategory(categoryId: string){
-    this._categoriesService.deleteCategory(categoryId);    
-    this._snackBar.open("Category deleted", "OK");
+  deleteCategory(categoryId: string) {
+    this._categoriesService.deleteCategory(categoryId);
+    this._snackBar.open('Category deleted', 'OK');
   }
-  editCategory(category: ICategories){
-    let _dialogRef : MdDialogRef<CategoryDetailComponent>;    
+  editCategory(category: ICategories) {
+    let _dialogRef: MdDialogRef<CategoryDetailComponent>;
     _dialogRef = this._dialog.open(CategoryDetailComponent);
     _dialogRef.componentInstance.category = category;
     _dialogRef.componentInstance.editMode = true;
     _dialogRef.afterClosed()
     .filter(result => !!result)
-    .subscribe(updatedCategory => {            
-      this._categoriesService.updateCategory(category.$key, updatedCategory.value);      
+    .subscribe(updatedCategory => {
+      this._categoriesService.updateCategory(category.$key, updatedCategory.value);
       this._snackBar.open(
-       "Category is updated",
-       "OK",
+       'Category is updated',
+       'OK',
       {
         duration: 6000
       });
     });
   }
-
-
 }

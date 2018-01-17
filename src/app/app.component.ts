@@ -23,7 +23,7 @@ export class AppComponent {
       (value) => this.activateAnimation = value
     );
   }
-  isDarkTheme: boolean = true;  
+  isDarkTheme: boolean = false;  
   onThemeChange(status: boolean) {
     this.isDarkTheme = status;
   }

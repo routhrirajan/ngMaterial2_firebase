@@ -1,5 +1,5 @@
 <h3>Manage Links</h3>
-<form (ngSubmit)="onSubmit()" novalidate [formGroup]="linksForm">
+<form *ngIf="link" (ngSubmit)="onSubmit()" novalidate [formGroup]="linksForm">
   <div fxLayout="column" fxLayoutGap="8px">
     <md-input-container>
       <input mdInput type="text" placeholder="Name" formControlName="name" >
@@ -11,7 +11,8 @@
       </md-error>                
     </md-input-container>      
      <section>
-     <input type="file" placeholder="image" formControlName="image">     
+     <input type="file" placeholder="image" formControlName="image">    
+     <input type="button" value="Choose an image"> 
      </section>
     <md-input-container>
         <input mdInput type="url" placeholder="url" formControlName="url">     
