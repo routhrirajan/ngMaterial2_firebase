@@ -10,7 +10,8 @@ import { EnquireModule } from './enquire/enquire.module';
 import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
 import { LinksModule } from './links/links.module';
-import 'hammerjs';
+import { UploadModule } from './uploads/shared/upload.module';
+//import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import 'hammerjs';
     EnquireModule,
     CategoriesModule,
     UsersModule,
-    LinksModule
+    LinksModule,
+    UploadModule
   ],
   bootstrap: [AppComponent]
 })

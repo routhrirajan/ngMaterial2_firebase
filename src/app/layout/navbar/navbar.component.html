@@ -2,8 +2,8 @@
   <button md-icon-button (click)="onOpenSidebar()">
     <md-icon>menu</md-icon>
   </button>
-  <span fxHide.xs>
-    <img src="assets/images/rcslogo.jpg" width="100px" alt="RCS Seva">  
+  <span fxHide.xs class="logo">
+    <img src="assets/images/rcslogo14.png" width="100px" alt="RCS Seva">  
   </span>
   <span fxFlex></span>
   <a md-icon-button [routerLink]="['/home']" routerLinkActive="active">
@@ -34,5 +34,9 @@
   <button md-menu-item [routerLink]="['/categories']" routerLinkActive="active">
     <md-icon>playlist_add</md-icon>
     <span>Manage Categories</span>
+  </button>
+  <button md-menu-item [routerLink]="['/uploads']" routerLinkActive="active">
+    <md-icon>file_upload</md-icon>
+    <span>Upload Images</span>
   </button>
 </md-menu>

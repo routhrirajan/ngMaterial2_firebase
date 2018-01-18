@@ -1,9 +1,9 @@
-export interface ILink{
-    $key?:string
-    name:string
+export interface ILink {
+    $key?: string
+    name: string
     url?: string
     image?: string
     category?: string
     status?: boolean
-    visited?:number
+    visited?: number
 }

@@ -11,6 +11,11 @@ import { AuthenticationGuard } from '../../shared';
         path: 'links-detail',
         component: LinksDetailComponent,
         canActivate: [AuthenticationGuard] 
+      },
+      {
+        path: 'links-detail/:id',
+        component: LinksDetailComponent,
+        canActivate: [AuthenticationGuard] 
       }
     ])
   ],
