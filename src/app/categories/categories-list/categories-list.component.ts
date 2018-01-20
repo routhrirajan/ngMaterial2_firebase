@@ -14,7 +14,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
     public _categoriesService: CategoriesService,
     private _snackBar: MdSnackBar,
     private _dialog: MdDialog
-  ){ }
+  ) { }
 
   ngOnInit() {
     console.log('ngOnInit fired!');

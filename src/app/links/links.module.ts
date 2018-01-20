@@ -7,6 +7,7 @@ import { LinksListComponent } from './links-list/links-list.component';
 import { LinksDetailComponent } from './links-detail/links-detail.component';
 import { LinksDetailRoutingModule } from './links-detail/links-detail-routing.module'
 import { LinksService } from './services'
+import { ImagesListComponent } from 'app/links/images-list/images-list.component';
 
 @NgModule({
     imports: [
@@ -15,12 +16,17 @@ import { LinksService } from './services'
         LinksDetailRoutingModule
     ],
     exports: [
-        LinksComponent
+        LinksComponent,
+        ImagesListComponent
     ],
     declarations: [
         LinksComponent,
         LinksListComponent,
         LinksDetailComponent,
+        ImagesListComponent
+    ],
+    entryComponents:[
+        ImagesListComponent
     ],
     providers: [
         LinksService

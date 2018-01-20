@@ -1,5 +1,5 @@
 <h3>Manage Links</h3>
-<form *ngIf="link" (ngSubmit)="onSubmit()" novalidate [formGroup]="linksForm">
+<form *ngIf="linksForm" novalidate [formGroup]="linksForm">
   <div fxLayout="column" fxLayoutGap="8px">
     <md-input-container>
       <input mdInput type="text" placeholder="Name" formControlName="name" >
@@ -11,8 +11,9 @@
       </md-error>                
     </md-input-container>      
      <section>
-     <input type="file" placeholder="image" formControlName="image">    
-     <input type="button" value="Choose an image"> 
+     <input type="file" placeholder="image" formControlName="image">   
+    (or) 
+     <button md-raised-button color="accent" (click)="openChooseGallery()" >Choose from gallery</button>
      </section>
     <md-input-container>
         <input mdInput type="url" placeholder="url" formControlName="url">     
@@ -30,6 +31,7 @@
   </div>
   <md-dialog-actions align="end">
     <button md-button type="button" [routerLink]="['/links']">Cancel</button>
-    <button md-button color="accent" [disabled]="linksForm.invalid">Submit</button>
+    <button md-button color="accent" [disabled]="linksForm.invalid" (click)="onSubmit()">Submit</button>
   </md-dialog-actions>
+  <p>Form value : {{linksForm.value | json}}</p>  
 </form>

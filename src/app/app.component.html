@@ -1,4 +1,7 @@
 <div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
+        <div class="loading-overlay" #spinnerElement style="display:none">
+                <md-progress-bar mode="indeterminate"></md-progress-bar>
+            </div>
     <header>
         <app-navbar [isDarkTheme]='isDarkTheme' (notify)='onThemeChange($event)' (toggleSidebar)="toggleSidebar($event)"></app-navbar>
     </header>
@@ -6,8 +9,8 @@
         <md-sidenav-container>
             <div id="mySidenav" class="sidenav">
                 <router-outlet name="sidebar"></router-outlet>
-            </div>
-            <div id="main">
+            </div>            
+            <div id="main">                    
                 <router-outlet></router-outlet>                
             </div>
         </md-sidenav-container>
