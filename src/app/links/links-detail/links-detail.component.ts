@@ -14,7 +14,7 @@ import { log } from 'util';
   templateUrl: './links-detail.component.html',
   styleUrls: ['./links-detail.component.css']
 })
-export class LinksDetailComponent {
+export class LinksDetailComponent implements OnInit{
   linksForm: FormGroup;
   link: any;
   categories: any;
@@ -26,19 +26,22 @@ export class LinksDetailComponent {
     private _dialog: MdDialog,
     private route: ActivatedRoute
   ) {
+  }
+  ngOnInit() {
     this.createForm();
   }
   createForm() {
     this.route.params.subscribe(params => this.link = this._linksService.getLink(params['id']));
 
     this.link.subscribe(link => {
+      console.log(link.$key)
       this.linksForm = this.fb.group({
-        key: [link.key === void 0 ? '' : link.$key],
-        name: [link.key === void 0 ? '' : link.name, [Validators.required, Validators.minLength(3)]],
-        image: [link.key === void 0 ? 'assets/images/noimage.jpg' : link.image],
-        url: [link.key === void 0 ? '' : link.url],
-        status: [link.key === void 0 ? true : link.status],
-        category: [link.key === void 0 ? '' : link.category],
+        key: [link.$key === void 0 ? '' : link.$key],
+        name: [link.$key === void 0 ? '' : link.name, [Validators.required, Validators.minLength(3)]],
+        image: [link.$key === void 0 ? 'assets/images/noimage.jpg' : link.image],
+        url: [link.$key === void 0 ? '' : link.url],
+        status: [link.$key === void 0 ? true : link.status],
+        category: [link.$key === void 0 ? '' : link.category],
       })
     })
     this.categories = this._categoriesService.getCategoriesList();
