@@ -6,14 +6,11 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class UploadService {
-
+  private basePath = '/uploads';
+  uploads: FirebaseListObservable<Upload[]>;
   constructor(private db: AngularFireDatabase) { }
 
-  private basePath:string = '/uploads';
-  uploads: FirebaseListObservable<Upload[]>;
-
-
-  getUploads(query={}) {
+  getUploads(query= {}) {
     this.uploads = this.db.list(this.basePath, {
       query: query
     });
@@ -37,7 +34,7 @@ export class UploadService {
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) =>  {
         // upload in progress
-        let snap = snapshot as firebase.storage.UploadTaskSnapshot
+        const snap = snapshot as firebase.storage.UploadTaskSnapshot
         upload.progress = (snap.bytesTransferred / snap.totalBytes) * 100
       },
       (error) => {
@@ -68,7 +65,7 @@ export class UploadService {
 
   // Firebase files must have unique names in their respective storage dir
   // So the name serves as a unique key
-  private deleteFileStorage(name:string) {
+  private deleteFileStorage(name: string) {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete()
   }
