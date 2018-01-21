@@ -1,10 +1,11 @@
-<div *ngFor="let upload of uploads | async">
-<md-card>       
-        <md-card-content>        
-            <img md-card-image [src]="upload.url">        
-        </md-card-content>      
-        <md-card-footer align="end">
-            {{upload.name}}                
-        </md-card-footer>
-    </md-card>
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
+    <md-button-toggle-group #group="mdButtonToggleGroup">
+        <div *ngFor="let upload of uploads | async">
+            <md-button-toggle [value]="upload.url">
+                <img md-card-image [src]="upload.url">
+            </md-button-toggle>
+        </div>
+    </md-button-toggle-group>
 </div>
+<button md-raised-button type="button" [md-dialog-close]="true">Cancel</button>
+<button md-raised-button color="accent" [disabled]="!group.value" (click)="imageListDialogRef.close(group.value)">Submit</button>
