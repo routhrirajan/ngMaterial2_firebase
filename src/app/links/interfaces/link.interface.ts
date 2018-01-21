@@ -1,6 +1,6 @@
 export interface ILink {
     $key?: string
-    name: string
+    name?: string
     url?: string
     image?: string
     category?: string

@@ -7,6 +7,7 @@ import { ICategories, CategoriesService } from 'app/categories';
 import { LinksService } from '../services';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesListComponent } from 'app/links/images-list/images-list.component';
+import { log } from 'util';
 
 @Component({
   selector: 'app-links-detail',
@@ -27,18 +28,17 @@ export class LinksDetailComponent {
   ) {
     this.createForm();
   }
-
   createForm() {
     this.route.params.subscribe(params => this.link = this._linksService.getLink(params['id']));
 
     this.link.subscribe(link => {
       this.linksForm = this.fb.group({
-        key: [link === void 0 ? '' : link.$key],
-        name: [link === void 0 ? '' : link.name, [Validators.required, Validators.minLength(3)]],
-        image: [link === void 0 ? '' : link.image],
-        url: [link === void 0 ? '' : link.url],
-        status: [link === void 0 ? true : link.status],
-        category: [link === void 0 ? '' : link.category],
+        key: [link.key === void 0 ? '' : link.$key],
+        name: [link.key === void 0 ? '' : link.name, [Validators.required, Validators.minLength(3)]],
+        image: [link.key === void 0 ? 'assets/images/noimage.jpg' : link.image],
+        url: [link.key === void 0 ? '' : link.url],
+        status: [link.key === void 0 ? true : link.status],
+        category: [link.key === void 0 ? '' : link.category],
       })
     })
     this.categories = this._categoriesService.getCategoriesList();
@@ -46,6 +46,11 @@ export class LinksDetailComponent {
   openChooseGallery() {
     let _dialogRef: MdDialogRef<ImagesListComponent>;
     _dialogRef = this._dialog.open(ImagesListComponent);
+    _dialogRef.afterClosed()
+    .subscribe(result => {
+      this.linksForm.patchValue({image: result });
+    }
+     )
   }
   onSubmit() {
     if (this.linksForm.get('key').value) {

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UploadService } from '../../uploads/shared/upload.service';
 import { Upload } from '../../uploads/shared/upload';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { MdDialogRef } from '@angular/material';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -14,11 +15,12 @@ export class ImagesListComponent implements OnInit {
   uploads: FirebaseListObservable<Upload[]>;
   showSpinner = true;
 
-  constructor(private upSvc: UploadService) { }
+  constructor(private upSvc: UploadService,
+    public imageListDialogRef: MdDialogRef<ImagesListComponent>
+  ) { }
 
   ngOnInit() {
     this.uploads = this.upSvc.getUploads({limitToLast: 5})
     this.uploads.subscribe(() => this.showSpinner = false)
   }
-
 }

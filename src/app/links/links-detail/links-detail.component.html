@@ -1,7 +1,7 @@
 <h3>Manage Links</h3>
 <form *ngIf="linksForm" novalidate [formGroup]="linksForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <md-input-container>
+    <md-input-container>        
       <input mdInput type="text" placeholder="Name" formControlName="name" >
       <md-error *ngIf="linksForm.get('name').hasError('required') && linksForm.get('name').touched">
         Name is <strong>required</strong>
@@ -10,12 +10,15 @@
         Name must have minimum<strong> 3 characters </strong>
       </md-error>                
     </md-input-container>      
-     <section>
-     <input type="file" placeholder="image" formControlName="image">   
-    (or) 
+     <section>     
      <button md-raised-button color="accent" (click)="openChooseGallery()" >Choose from gallery</button>
-     </section>
+     
+     </section> 
+     <section>
+        <img [src]="linksForm?.get('image').value || '' " width="100px">
+     </section>  
     <md-input-container>
+        <span mdPrefix>http:// &nbsp;</span>
         <input mdInput type="url" placeholder="url" formControlName="url">     
     </md-input-container>
     <md-select formControlName="category" placeholder="Select Category">
@@ -30,8 +33,8 @@
      </section>  
   </div>
   <md-dialog-actions align="end">
-    <button md-button type="button" [routerLink]="['/links']">Cancel</button>
-    <button md-button color="accent" [disabled]="linksForm.invalid" (click)="onSubmit()">Submit</button>
+    <button md-raised-button type="button" [routerLink]="['/links']">Cancel</button>
+    <button md-raised-button color="accent" [disabled]="linksForm.invalid" (click)="onSubmit()">Submit</button>
   </md-dialog-actions>
-  <p>Form value : {{linksForm.value | json}}</p>  
+  
 </form>

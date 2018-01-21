@@ -1,3 +1,5 @@
-md-card{
+md-button-toggle,[md-card-image]{
+    display: table;
     width:100px;
+    height:100px;
 }
