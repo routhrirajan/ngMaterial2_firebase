@@ -39,7 +39,7 @@ import { AnimationsService } from './animations/animations.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MomentModule,
-    Ng2Webstorage,    
+    Ng2Webstorage,
   ],
   providers: [
     MdIconRegistry,

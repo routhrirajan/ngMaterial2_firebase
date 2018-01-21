@@ -11,11 +11,10 @@ import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
 import { LinksModule } from './links/links.module';
 import { UploadModule } from './uploads/shared/upload.module';
-//import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent,              
+    AppComponent,
   ],
   imports: [
     HomeModule,
