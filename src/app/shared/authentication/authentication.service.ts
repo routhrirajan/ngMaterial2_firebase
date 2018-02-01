@@ -8,7 +8,7 @@ import { NotifyService } from '../common/notify.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
-import { IUser } from 'app/signin/interfaces/';
+import { IUser } from 'app/login/user.interface';
 
 
 @Injectable()
