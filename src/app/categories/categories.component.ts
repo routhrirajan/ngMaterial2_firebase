@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdSnackBar } from '@angular/material'
-import { CategoriesListComponent, CategoryDetailComponent, ICategories } from './index';
-import { CategoriesService } from './services/categories.service'
-
+import { MatDialog, MatSnackBar } from '@angular/material'
+import { CategoriesListComponent, CategoryDetailComponent, ICategories, CategoriesService } from './index';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']  
+  styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
- 
+
   category: ICategories;
   constructor(
-     private categoryDialog: MdDialog,
-     private snackbar: MdSnackBar,   
+     private categoryDialog: MatDialog,
+     private snackbar: MatSnackBar,
      private _categoriesService: CategoriesService
   ) { }
 
   ngOnInit() {
-    
   }
   openAddCategory() {
     this.categoryDialog
@@ -29,8 +26,8 @@ export class CategoriesComponent implements OnInit {
       .subscribe(category => {
         this._categoriesService.createCategory(category.value);
         this.snackbar.open(
-       "Category Added",
-       "OK",
+       'Category Added',
+       'OK',
       {
         duration: 6000
       });

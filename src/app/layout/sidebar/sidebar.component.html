@@ -1,21 +1,11 @@
-<md-sidenav opened="true">
-<md-nav-list>
-    <h3>E-Ticketing</h3>
-<md-list dense>
-      <h3 md-subheader>e-Ticketing</h3>
-      <md-list-item>
-        IRCTC
-      </md-list-item>
-    </md-list>
-</md-nav-list>
-<md-divider></md-divider>
-<md-nav-list>
-    <md-list>
-      <md-list-item>
-        <h3 md-line>Government</h3>
-        <p md-line >extra line</p>
-        <p md-line class="demo-secondary-text">Headline</p>
-      </md-list-item>
-    </md-list>
-</md-nav-list>
-</md-sidenav>
+<mat-sidenav opened="true">
+<mat-nav-list>
+    <h3>Categories</h3>   
+<mat-list dense>      
+      <mat-list-item *ngFor="let category of categories | async" [routerLink]="['/home', category.name]">
+        <a  routerLinkActive="active" >{{category.name}}</a>
+      </mat-list-item>
+    </mat-list>
+</mat-nav-list>
+<mat-divider></mat-divider>
+</mat-sidenav>

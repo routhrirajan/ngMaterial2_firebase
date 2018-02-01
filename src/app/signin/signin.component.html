@@ -1,31 +1,31 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
   <div class="login">
-    <md-toolbar color="primary"><h1>Sign In</h1></md-toolbar>
-    <md-card>      
+    <mat-toolbar color="primary"><h1>Sign In</h1></mat-toolbar>
+    <mat-card>      
       <form (ngSubmit)="onSubmit(signInForm)" novalidate [formGroup]="signInForm">
         <div fxLayout="column" fxLayoutGap="8px">         
-          <md-input-container>            
-            <input mdInput #email type="text" formControlName="email">
-            <md-placeholder><md-icon>account_box</md-icon> User Name</md-placeholder>
-            <md-error *ngIf="signInForm.get('email').hasError('pattern') && signInForm.get('email').touched">
+          <mat-input-container>            
+            <input matInput #email type="text" formControlName="email">
+            <mat-placeholder><mat-icon>account_box</mat-icon> User Name</mat-placeholder>
+            <mat-error *ngIf="signInForm.get('email').hasError('pattern') && signInForm.get('email').touched">
               Please enter a valid email address
-            </md-error>
-            <md-error *ngIf="signInForm.get('email').hasError('required') && signInForm.get('email').touched">
+            </mat-error>
+            <mat-error *ngIf="signInForm.get('email').hasError('required') && signInForm.get('email').touched">
               User Name is <strong>required</strong>
-            </md-error>
-          </md-input-container>    
-           <md-input-container>
-            <input mdInput type="password" formControlName="password">
-            <md-placeholder><md-icon>lock</md-icon> Password</md-placeholder>
-            <md-error *ngIf="signInForm.get('password').hasError('required') && signInForm.get('password').touched">
+            </mat-error>
+          </mat-input-container>    
+           <mat-input-container>
+            <input matInput type="password" formControlName="password">
+            <mat-placeholder><mat-icon>lock</mat-icon> Password</mat-placeholder>
+            <mat-error *ngIf="signInForm.get('password').hasError('required') && signInForm.get('password').touched">
               Password is <strong>required</strong>
-            </md-error>            
-          </md-input-container>              
+            </mat-error>            
+          </mat-input-container>              
         </div>
-        <md-dialog-actions align="end">          
-          <button md-raised-button color="primary" [disabled]="signInForm.invalid">Sign In</button>
-        </md-dialog-actions>
+        <mat-dialog-actions align="end">          
+          <button mat-raised-button color="primary" [disabled]="signInForm.invalid">Sign In</button>
+        </mat-dialog-actions>
       </form>
-    </md-card>      
+    </mat-card>      
   </div>
 </div>

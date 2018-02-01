@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from 'app/shared/authentication/authentication.guard';
 
 const appRoutes: Routes = [
   {
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
   exports: [
     RouterModule,
   ],
-  providers: [],
+  providers: [AuthenticationGuard],
 })
 
 export class AppRoutingModule { }

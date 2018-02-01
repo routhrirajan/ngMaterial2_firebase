@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { ILink } from 'app/links/interfaces';
 
 @Component({
   selector: 'app-link-list',
@@ -9,13 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LinkListComponent {
   @Input()
-  links: any;
+  links: Observable<ILink[]>;
 
   @Input()
   className: string;
 
-  constructor(
-    public af: AngularFireAuth,
-    public router: Router
-  ) { }
+  constructor(public afAuth: AngularFireAuth) {
+  }
 }

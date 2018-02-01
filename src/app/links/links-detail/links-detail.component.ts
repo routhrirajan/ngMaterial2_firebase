@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MdSnackBar, MdDialog, MdDialogRef } from '@angular/material'
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material'
 
 import { ILink } from '../interfaces';
 import { ICategories, CategoriesService } from 'app/categories';
@@ -8,22 +8,23 @@ import { LinksService } from '../services';
 import { ActivatedRoute } from '@angular/router';
 import { ImagesListComponent } from 'app/links/images-list/images-list.component';
 import { log } from 'util';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-links-detail',
   templateUrl: './links-detail.component.html',
   styleUrls: ['./links-detail.component.css']
 })
-export class LinksDetailComponent implements OnInit{
+export class LinksDetailComponent implements OnInit, OnDestroy {
   linksForm: FormGroup;
-  link: any;
+  link: Observable<ILink>;
   categories: any;
   constructor(
     private fb: FormBuilder,
     private _categoriesService: CategoriesService,
     private _linksService: LinksService,
-    private _snackBar: MdSnackBar,
-    private _dialog: MdDialog,
+    private _snackBar: MatSnackBar,
+    private _dialog: MatDialog,
     private route: ActivatedRoute
   ) {
   }
@@ -34,26 +35,26 @@ export class LinksDetailComponent implements OnInit{
     this.route.params.subscribe(params => this.link = this._linksService.getLink(params['id']));
 
     this.link.subscribe(link => {
-      console.log(link.$key)
       this.linksForm = this.fb.group({
-        key: [link.$key === void 0 ? '' : link.$key],
-        name: [link.$key === void 0 ? '' : link.name, [Validators.required, Validators.minLength(3)]],
-        image: [link.$key === void 0 ? 'assets/images/noimage.jpg' : link.image],
-        url: [link.$key === void 0 ? '' : link.url],
-        status: [link.$key === void 0 ? true : link.status],
-        category: [link.$key === void 0 ? '' : link.category],
+        key: [link === null ? '' : link.$key],
+        name: [link === null ? '' : link.name, [Validators.required, Validators.minLength(3)]],
+        image: [link === null ? 'assets/images/noimage.jpg' : link.image],
+        url: [link === null ? '' : link.url],
+        status: [link === null ? true : link.status],
+        category: [link === null ? '' : link.category],
       })
     })
     this.categories = this._categoriesService.getCategoriesList();
   }
   openChooseGallery() {
-    let _dialogRef: MdDialogRef<ImagesListComponent>;
+    let _dialogRef: MatDialogRef<ImagesListComponent>;
     _dialogRef = this._dialog.open(ImagesListComponent);
     _dialogRef.afterClosed()
     .subscribe(result => {
+      if (result !== true) {
       this.linksForm.patchValue({image: result });
-    }
-     )
+      }
+    })
   }
   onSubmit() {
     if (this.linksForm.get('key').value) {
@@ -63,5 +64,8 @@ export class LinksDetailComponent implements OnInit{
       this._linksService.createLink(this.linksForm.value);
       this._snackBar.open('Links Created', 'OK');
     }
+  }
+  ngOnDestroy() {
+    this.link = null;
   }
 }

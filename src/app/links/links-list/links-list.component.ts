@@ -2,28 +2,27 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LinksService } from '../services'
 import { ILink } from '../interfaces'
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-links-list',
   templateUrl: './links-list.component.html',
   styleUrls: ['./links-list.component.css']
 })
-export class LinksListComponent {
-links: any;
-selectedLink: ILink;
+export class LinksListComponent implements OnInit {
+@Input()
+links: Observable<ILink[]>;
   constructor(
-    public router:Router, 
+    public router: Router,
     public _linksService: LinksService,
-    private _snackBar: MdSnackBar,
+    private _snackBar: MatSnackBar,
     ) { }
 
- ngOnInit(){
-   this.links = this._linksService.getLinksList();
- } 
+ ngOnInit() { }
 
- deleteLink(linkId: string){
+ deleteLink(linkId: string) {
   this._linksService.deleteLink(linkId);
-  this._snackBar.open("Link deleted", "OK");
+  this._snackBar.open('Link deleted', 'OK');
  }
 }

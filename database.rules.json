@@ -1,27 +1,27 @@
 // These rules require authentication
 {
-  "rules": {
+	"rules": {
 		".read": true,
-    ".write": false,
-    	"dummylinks":{
-    	".read": true,
-    	".write":"auth != null"
-  		},
-  		"links":{
-    	".read": "auth != null",
-    	".write": "auth != null"
-  		},
-      "enquiry":{
-    	".read": "auth != null",
-    	".write": "auth != null"
-    	},
-      "categories":{
-    	".read": "auth != null",
-    	".write": "auth != null"
-    	},
-      "uploads":{
-    	".read": "auth != null",
-    	".write": "auth != null"
-    	}
+		".write": false,		
+		"links": {
+			".read": true,
+			".write": "auth != null",
+			".indexOn": "category"
+		},
+		"enquiry": {
+			".read": "auth != null",
+			".write": "auth != null"
+		},
+		"categories": {
+			".read": "auth != null",
+			".write": "auth != null"
+		},
+		"uploads": {
+			".read": "auth != null",
+			".write": "auth != null"
+		},
+		"users": {
+			".write": "auth != null"
 		}
+	}
 }

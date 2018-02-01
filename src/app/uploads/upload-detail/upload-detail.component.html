@@ -1,12 +1,12 @@
-<md-card>       
-    <md-card-content>        
-        <img md-card-image [src]="upload.url">        
-    </md-card-content>      
-    <md-card-footer align="end">
+<mat-card>       
+    <mat-card-content>        
+        <img mat-card-image [src]="upload.url">        
+    </mat-card-content>      
+    <mat-card-footer align="end">
         {{upload.name}}
-            <button md-icon-button color="accent" (click)='deleteUpload(upload)'>
-                    <md-icon>delete</md-icon>    
+            <button mat-icon-button color="accent" (click)='deleteUpload(upload)'>
+                    <mat-icon>delete</mat-icon>    
                 </button> 
-    </md-card-footer>
-</md-card>
+    </mat-card-footer>
+</mat-card>
 

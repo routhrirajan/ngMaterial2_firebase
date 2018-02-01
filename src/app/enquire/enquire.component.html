@@ -1,43 +1,43 @@
 <h3>Fill in your contact information, we will contact you..</h3>
 <form (ngSubmit)="dialogRef.close(enquiryForm)" novalidate [formGroup]="enquiryForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <md-input-container>
-      <input mdInput type="text" placeholder="Full name" formControlName="fullName">
-      <md-error *ngIf="enquiryForm.get('fullName').hasError('required') && enquiryForm.get('fullName').touched">
+    <mat-input-container>
+      <input matInput type="text" placeholder="Full name" formControlName="fullName">
+      <mat-error *ngIf="enquiryForm.get('fullName').hasError('required') && enquiryForm.get('fullName').touched">
         Name is <strong>required</strong>
-      </md-error>
-      <md-error *ngIf="enquiryForm.get('fullName').hasError('minlength') && enquiryForm.get('fullName').touched">
+      </mat-error>
+      <mat-error *ngIf="enquiryForm.get('fullName').hasError('minlength') && enquiryForm.get('fullName').touched">
         Name must have minimum<strong> 3 characters </strong>
-      </md-error>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput asyncValidator type="email" placeholder="E-mail" formControlName="email">
-      <md-error *ngIf="enquiryForm.get('email').hasError('pattern') && enquiryForm.get('email').touched">
+      </mat-error>
+    </mat-input-container>
+    <mat-input-container>
+      <input matInput asyncValidator type="email" placeholder="E-mail" formControlName="email">
+      <mat-error *ngIf="enquiryForm.get('email').hasError('pattern') && enquiryForm.get('email').touched">
         Please enter a valid email address
-      </md-error>
-      <md-error *ngIf="enquiryForm.get('email').hasError('required') && enquiryForm.get('email').touched">
+      </mat-error>
+      <mat-error *ngIf="enquiryForm.get('email').hasError('required') && enquiryForm.get('email').touched">
         Email is <strong>required</strong>
-      </md-error>
-      <md-error *ngIf="enquiryForm.get('email').hasError('asyncInvalid') && enquiryForm.get('email').touched">
+      </mat-error>
+      <mat-error *ngIf="enquiryForm.get('email').hasError('asyncInvalid') && enquiryForm.get('email').touched">
         Email is <strong>already registered</strong>
-      </md-error>
+      </mat-error>
       
-    </md-input-container>
-    <md-input-container>
-      <input mdInput type="tel" placeholder="Mobile" formControlName="mobile">
-      <md-error *ngIf="enquiryForm.get('mobile').hasError('required') && enquiryForm.get('mobile').touched">
+    </mat-input-container>
+    <mat-input-container>
+      <input matInput type="tel" placeholder="Mobile" formControlName="mobile">
+      <mat-error *ngIf="enquiryForm.get('mobile').hasError('required') && enquiryForm.get('mobile').touched">
         Mobile is <strong>required</strong>
-      </md-error>
-    </md-input-container>
-    <md-input-container>
-      <textarea mdInput placeholder="Details" rows="5" cols="60" formControlName="details"></textarea>
-      <md-error *ngIf="enquiryForm.get('details').hasError('required') && enquiryForm.get('details').touched">
+      </mat-error>
+    </mat-input-container>
+    <mat-input-container>
+      <textarea matInput placeholder="Details" rows="5" cols="60" formControlName="details"></textarea>
+      <mat-error *ngIf="enquiryForm.get('details').hasError('required') && enquiryForm.get('details').touched">
         Details are <strong>required</strong>
-      </md-error>
-    </md-input-container>
+      </mat-error>
+    </mat-input-container>
   </div>
-  <md-dialog-actions align="end">
-    <button md-button type="button" (click)="dialogRef.close()">Cancel</button>
-    <button md-button color="accent" [disabled]="enquiryForm.invalid">Submit</button>
-  </md-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button mat-button color="accent" [disabled]="enquiryForm.invalid">Submit</button>
+  </mat-dialog-actions>
 </form>

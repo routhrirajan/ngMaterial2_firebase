@@ -1,21 +1,23 @@
-<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-  <md-card *ngFor="let link of links | async">    
-   <a *ngIf="link.url != null" target="_blank" [href]="link.url">
-    <md-card-content>
-    <img md-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
-    </md-card-content>
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">   
+  <mat-card *ngFor="let link of links | async">    
+    <a *ngIf="!(afAuth.authState | async)" [routerLink]="['/login']">
+      <mat-card-content>
+      <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
+      </mat-card-content>
+     </a>
+     
+    <a *ngIf="afAuth.authState | async" target="_blank" [href]="link.url">
+    <mat-card-content>
+    <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
+    </mat-card-content>
    </a>
-  <a *ngIf="link.url == null" [routerLink]="['/signin']">
-    <md-card-content>
-    <img md-card-image [src]="link.image">
-    </md-card-content>
-   </a>
-  <md-card-footer>    
-  <button class="md-card-favorites" md-icon-button>
-      <md-icon>favorite_border</md-icon>
+  
+  <mat-card-footer>    
+  <button class="mat-card-favorites" mat-icon-button>
+      <mat-icon>favorite_border</mat-icon>
     </button> 
-    <a *ngIf="link.url != null" md-button target="_blank" [href]="link.url">{{link.name}}</a>
-    <a *ngIf="link.url == null" md-button [routerLink]="['/signin']">{{link.name}}</a>    
-  </md-card-footer>
-  </md-card>  
+    <a *ngIf="afAuth.authState | async" mat-button target="_blank" [href]="link.url">{{link.name}}</a>
+    <a *ngIf="!(afAuth.authState | async)" mat-button [routerLink]="['/login']">{{link.name}}</a>    
+  </mat-card-footer>
+  </mat-card>  
 </div>

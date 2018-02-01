@@ -1,17 +1,17 @@
 <div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-  <md-card *ngFor="let link of links | async">      
-  <a [routerLink]="['/links-detail']">
-    <md-card-content>
-    <img md-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
-    </md-card-content>
+  <mat-card *ngFor="let link of links | async">      
+  <a [routerLink]="['/links-detail', link.$key]">
+    <mat-card-content>
+    <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
+    </mat-card-content>
    </a>
-  <md-card-footer align="end">   
-      <button md-icon-button [routerLink]="['/links-detail', link.$key]" >
-          <md-icon class="md-24">mode_edit</md-icon>
+  <mat-card-footer align="end">   
+      <button mat-icon-button [routerLink]="['/links-detail', link.$key]" >
+          <mat-icon class="mat-24">mode_edit</mat-icon>
         </button> 
-        <button md-icon-button (click)="deleteLink(link.$key)">
-            <md-icon class="md-24">delete</md-icon>
+        <button mat-icon-button (click)="deleteLink(link.$key)">
+            <mat-icon class="mat-24">delete</mat-icon>
           </button>     
-  </md-card-footer>
-  </md-card>  
+  </mat-card-footer>
+  </mat-card>  
 </div>

@@ -1,7 +1,7 @@
-md-card{
+mat-card{
     width:100px;  
 }
-.md-card-favorites{
+.mat-card-favorites{
     position: absolute;
     top: 0;
     right: 0;
@@ -9,4 +9,7 @@ md-card{
     height: 26px;
     padding: 0;   
     cursor: pointer;       
+}
+mat-card-content{     
+    margin-bottom: 0px;   
 }

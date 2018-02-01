@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AuthenticationGuard } from './../shared';
-import { CategoriesComponent } from './index';
+import { AuthenticationGuard } from './../shared/authentication/authentication.guard';
+import { CategoriesComponent } from './categories.component';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
         path: 'categories',
-        component: CategoriesComponent,   
-        canActivate: [AuthenticationGuard]     
+        component: CategoriesComponent,
+        canActivate: [AuthenticationGuard]
     }
   ]),
 ],
