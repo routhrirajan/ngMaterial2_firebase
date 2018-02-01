@@ -1,40 +1,40 @@
 <h3>Manage Links</h3>
 <form *ngIf="linksForm" novalidate [formGroup]="linksForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <md-input-container>        
-      <input mdInput type="text" placeholder="Name" formControlName="name" >
-      <md-error *ngIf="linksForm.get('name').hasError('required') && linksForm.get('name').touched">
+    <mat-input-container>        
+      <input matInput type="text" placeholder="Name" formControlName="name" >
+      <mat-error *ngIf="linksForm.get('name').hasError('required') && linksForm.get('name').touched">
         Name is <strong>required</strong>
-      </md-error>
-      <md-error *ngIf="linksForm.get('name').hasError('minlength') && linksForm.get('name').touched">
+      </mat-error>
+      <mat-error *ngIf="linksForm.get('name').hasError('minlength') && linksForm.get('name').touched">
         Name must have minimum<strong> 3 characters </strong>
-      </md-error>                
-    </md-input-container>      
+      </mat-error>                
+    </mat-input-container>      
      <section>     
-     <button md-raised-button color="accent" (click)="openChooseGallery()" >Choose from gallery</button>
+     <button mat-raised-button color="accent" (click)="openChooseGallery()" >Choose from gallery</button>
      
      </section> 
      <section>
         <img [src]="linksForm?.get('image').value || '' " width="100px">
      </section>  
-    <md-input-container>
-        <span mdPrefix>http:// &nbsp;</span>
-        <input mdInput type="url" placeholder="url" formControlName="url">     
-    </md-input-container>
-    <md-select formControlName="category" placeholder="Select Category">
-        <md-option *ngFor="let category of categories | async" [value]="category.name">
+    <mat-input-container>
+        <span matPrefix>http:// &nbsp;</span>
+        <input matInput type="url" placeholder="url" formControlName="url">     
+    </mat-input-container>
+    <mat-select formControlName="category" placeholder="Select Category">
+        <mat-option *ngFor="let category of categories | async" [value]="category.name">
             {{category.name}}
-        </md-option>
-    </md-select>    
+        </mat-option>
+    </mat-select>    
      <section>
-      <md-slide-toggle mdInput formControlName="status">
+      <mat-slide-toggle matInput formControlName="status">
         Status
-      </md-slide-toggle>
+      </mat-slide-toggle>
      </section>  
   </div>
-  <md-dialog-actions align="end">
-    <button md-raised-button type="button" [routerLink]="['/links']">Cancel</button>
-    <button md-raised-button color="accent" [disabled]="linksForm.invalid" (click)="onSubmit()">Submit</button>
-  </md-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button type="button" [routerLink]="['/links']">Cancel</button>
+    <button mat-raised-button color="accent" [disabled]="linksForm.invalid" (click)="onSubmit()">Submit</button>
+  </mat-dialog-actions>
   
 </form>

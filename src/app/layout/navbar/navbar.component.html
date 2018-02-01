@@ -1,42 +1,42 @@
-<md-toolbar color="primary" class="toolbar">
-  <button md-icon-button (click)="onOpenSidebar()">
-    <md-icon>menu</md-icon>
+<mat-toolbar color="primary" class="toolbar">
+  <button mat-icon-button (click)="onOpenSidebar()">
+    <mat-icon>menu</mat-icon>
   </button>
   <span fxHide.xs class="logo">
     <img src="assets/images/rcslogo14.png" width="100px" alt="RCS Seva">  
   </span>
   <span fxFlex></span>
-  <a md-icon-button [routerLink]="['/home']" routerLinkActive="active">
-    <md-icon>home</md-icon>
+  <a mat-icon-button [routerLink]="['/home']" routerLinkActive="active">
+    <mat-icon>home</mat-icon>
   </a>
-  <span *ngIf="_signinService.user | async">Hey, {{ (_signinService.user | async)?.email }}</span>
-  <a md-button *ngIf="!(_signinService.user | async)" [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>  
-  <a md-button *ngIf="(_signinService.user | async)" (click)="logout()" routerLinkActive="active">Signout</a>  
+  <span *ngIf="afAuth.authState | async as user">Hey, {{ user.email }}</span>
+  <a mat-button *ngIf="!(afAuth.authState | async)" [routerLink]="['/login']" routerLinkActive="active">Sign In</a>  
+  <a mat-button *ngIf="afAuth.authState | async" (click)="logout()" routerLinkActive="active">Signout</a>  
  
-  <button *ngIf="_signinService.user | async" md-icon-button [mdMenuTriggerFor]="themeMenu">
-      <md-icon>more_vert</md-icon>
+  <button *ngIf="afAuth.authState | async" mat-icon-button [matMenuTriggerFor]="themeMenu">
+      <mat-icon>more_vert</mat-icon>
     </button>
 
-</md-toolbar>
-<md-menu #themeMenu x-position="before">
-  <button md-menu-item (click)="onThemeChange()">
-    <md-icon>invert_colors</md-icon>
+</mat-toolbar>
+<mat-menu #themeMenu x-position="before">
+  <button mat-menu-item (click)="onThemeChange()">
+    <mat-icon>invert_colors</mat-icon>
     <span>Toggle Theme</span>
   </button>
-  <button md-menu-item [routerLink]="['/users']" routerLinkActive="active">
-    <md-icon>account_circle</md-icon>
+  <button mat-menu-item [routerLink]="['/users']" routerLinkActive="active">
+    <mat-icon>account_circle</mat-icon>
     <span>Manage Users</span>
   </button>
-  <button md-menu-item [routerLink]="['/links']" routerLinkActive="active">
-    <md-icon>link</md-icon>
+  <button mat-menu-item [routerLink]="['/links']" routerLinkActive="active">
+    <mat-icon>link</mat-icon>
     <span>Manage Links</span>
   </button>
-  <button md-menu-item [routerLink]="['/categories']" routerLinkActive="active">
-    <md-icon>playlist_add</md-icon>
+  <button mat-menu-item [routerLink]="['/categories']" routerLinkActive="active">
+    <mat-icon>playlist_add</mat-icon>
     <span>Manage Categories</span>
   </button>
-  <button md-menu-item [routerLink]="['/uploads']" routerLinkActive="active">
-    <md-icon>file_upload</md-icon>
+  <button mat-menu-item [routerLink]="['/uploads']" routerLinkActive="active">
+    <mat-icon>file_upload</mat-icon>
     <span>Upload Images</span>
   </button>
-</md-menu>
+</mat-menu>

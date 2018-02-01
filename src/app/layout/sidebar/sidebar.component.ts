@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ICategories, CategoriesService } from 'app/categories';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  constructor() { }
+  categories: Observable<ICategories[]>;
+  route: string;
+  constructor(
+    private _categoriesService: CategoriesService,
+  ) {
+    this.categories = this._categoriesService.getCategoriesList();
+  }
 }

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../shared/shared.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
-import { CategoriesComponent, CategoriesListComponent, CategoryDetailComponent, CategoriesService } from './index';
+import { CategoriesComponent } from './categories.component'
+import { CategoriesListComponent, CategoryDetailComponent, CategoriesService } from './index';
 
 @NgModule({
     imports: [
@@ -17,9 +18,8 @@ import { CategoriesComponent, CategoriesListComponent, CategoryDetailComponent, 
         CategoriesComponent,
         CategoryDetailComponent,
         CategoriesListComponent,
-       
     ],
-    entryComponents:[
+    entryComponents: [
         CategoryDetailComponent
     ],
     providers: [

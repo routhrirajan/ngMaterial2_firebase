@@ -1,13 +1,13 @@
-<md-card *ngFor="let category of categories | async">
-    <md-card-header>
-        <md-card-title>{{category.name}}</md-card-title>        
-        <md-card-subtitle>{{category.description}}</md-card-subtitle>
+<mat-card *ngFor="let category of categories | async">
+    <mat-card-header>
+        <mat-card-title>{{category.name}}</mat-card-title>        
+        <mat-card-subtitle>{{category.description}}</mat-card-subtitle>
         <span fxFlex></span> 
-        <button md-icon-button (click)="editCategory(category)" >
-          <md-icon class="md-24">mode_edit</md-icon>
+        <button mat-icon-button (click)="editCategory(category)" >
+          <mat-icon class="mat-24">mode_edit</mat-icon>
         </button>
-        <button md-icon-button (click)="deleteCategory(category.$key)">
-          <md-icon class="md-24">delete</md-icon>
+        <button mat-icon-button (click)="deleteCategory(category.$key)">
+          <mat-icon class="mat-24">delete</mat-icon>
         </button>
-    </md-card-header>   
-</md-card>
+    </mat-card-header>   
+</mat-card>

@@ -1,33 +1,21 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { IEnquireUser } from './../Interfaces'
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/throw';
-//import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class EnquiryService {
-  enquiry: FirebaseListObservable<any>;    
-  emailList: FirebaseObjectObservable<any>;
-  isEmailExists: Observable<any[]>;
+  enquiry: AngularFireList<IEnquireUser>;
+  emailList: AngularFireObject<IEnquireUser>;
+  isEmailExists: Observable<IEnquireUser>;
   constructor(private angularFiredb: AngularFireDatabase) {
-    //this.emailSubject = new Subject();
     this.enquiry = angularFiredb.list('/enquiry');
   }
   addEnquiry(detail: IEnquireUser) {
-    this.validateEmail(detail.email) 
-     
-    //this.enquiry.push(detail);
+    //this.validateEmail(detail.email);
   }
-  validateEmail(email: string): void {
-      // this.enquiry = this.angularFiredb.list('/enquiry',{
-      //   query :{
-      //     equalTo: email
-      //   } 
-      // })
-      this.isEmailExists = this.angularFiredb.list('/enquiry')
-     
-      console.log(this.isEmailExists);
-  }
+  // validateEmail(email: string): void {
+  //     this.isEmailExists = this.angularFiredb.list('/enquiry')
+  //     console.log(this.isEmailExists);
+  // }
 }

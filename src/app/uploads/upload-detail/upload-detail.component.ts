@@ -3,6 +3,7 @@ import { UploadService } from '../shared/upload.service';
 import { Upload } from '../shared/upload';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'upload-detail',
   templateUrl: './upload-detail.component.html',
   styleUrls: ['./upload-detail.component.css']

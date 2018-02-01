@@ -1,0 +1,40 @@
+/* .login {
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0 1px 1px 0, rgba(0, 0, 0, 0.09804) 0 1px 2px 0;
+    text-align: center;
+  }
+    .text {
+      margin-bottom: 16px;
+    }
+  
+    button {
+      margin: 0 4px;
+    }
+   */
+   .login-header {
+    padding: 0;
+  }
+  .login-header .mat-card-content {
+    padding: 16px;
+  }
+  .demo-full-width {
+    width: 100%;
+  }
+  
+  .login-card {
+    margin: 16px;    
+  }
+  
+  .demo-text-align-end {
+    text-align: end;
+  }
+  
+  .demo-textarea {
+    resize: none;
+    border: none;
+    overflow: auto;
+    padding: 0;
+    background: lightblue;
+  }
+  

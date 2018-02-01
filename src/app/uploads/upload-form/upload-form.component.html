@@ -1,6 +1,6 @@
 <div *ngIf="currentUpload">
-  <md-progress-bar [color]="accent" [mode]="determinate" [value]="currentUpload?.progress">
-  </md-progress-bar>
+  <mat-progress-bar [color]="accent" [mode]="determinate" [value]="currentUpload?.progress">
+  </mat-progress-bar>
   Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
 </div>
 
@@ -14,7 +14,7 @@
   </label>
 
 
-  <button md-raised-button color="accent" [disabled]="!selectedFiles" (click)="uploadMulti()">
+  <button mat-raised-button color="accent" [disabled]="!selectedFiles" (click)="uploadMulti()">
 
     Upload Multiple
   </button>

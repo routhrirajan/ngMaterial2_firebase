@@ -1,3 +1,6 @@
-md-card{
-    width:100px;  
+mat-card{
+    width:100px;    
+}
+mat-card-content{     
+    margin-bottom: 0px;   
 }

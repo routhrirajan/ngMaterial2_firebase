@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { CategoriesService } from '../services'
 import { ICategories } from '../interfaces'
 
@@ -18,7 +18,7 @@ export class CategoryDetailComponent implements OnInit {
   editMode = false;
   constructor(
     private fb: FormBuilder,
-    public categoryDialogRef: MdDialogRef<CategoryDetailComponent>,
+    public categoryDialogRef: MatDialogRef<CategoryDetailComponent>,
     public _categoryService: CategoriesService
   ) {
     this.checkCategoryExists = this.checkCategoryExists.bind(this);

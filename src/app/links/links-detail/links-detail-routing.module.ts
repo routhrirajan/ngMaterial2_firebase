@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { LinksDetailComponent } from "./links-detail.component";
-import { AuthenticationGuard } from '../../shared';
+import { LinksDetailComponent } from './links-detail.component';
+import { AuthenticationGuard } from '../../shared/authentication/authentication.guard';
 
 @NgModule({
   imports: [
@@ -10,12 +10,12 @@ import { AuthenticationGuard } from '../../shared';
       {
         path: 'links-detail',
         component: LinksDetailComponent,
-        canActivate: [AuthenticationGuard] 
+        canActivate: [AuthenticationGuard]
       },
       {
         path: 'links-detail/:id',
         component: LinksDetailComponent,
-        canActivate: [AuthenticationGuard] 
+        canActivate: [AuthenticationGuard]
       }
     ])
   ],

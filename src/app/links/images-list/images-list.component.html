@@ -1,11 +1,11 @@
-<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-    <md-button-toggle-group #group="mdButtonToggleGroup">
+<div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+    <mat-button-toggle-group #group="matButtonToggleGroup">
         <div *ngFor="let upload of uploads | async">
-            <md-button-toggle [value]="upload.url">
-                <img md-card-image [src]="upload.url">
-            </md-button-toggle>
+            <mat-button-toggle [value]="upload.url">
+                <img mat-card-image [src]="upload.url">
+            </mat-button-toggle>
         </div>
-    </md-button-toggle-group>
+    </mat-button-toggle-group>
 </div>
-<button md-raised-button type="button" [md-dialog-close]="true">Cancel</button>
-<button md-raised-button color="accent" [disabled]="!group.value" (click)="imageListDialogRef.close(group.value)">Submit</button>
+<button mat-raised-button type="button" [mat-dialog-close]="true">Cancel</button>
+<button mat-raised-button color="accent" [disabled]="!group.value" (click)="imageListDialogRef.close(group.value)">Submit</button>

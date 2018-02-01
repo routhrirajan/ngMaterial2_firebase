@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { AuthenticationGuard } from './../shared';
+// import { AuthenticationGuard } from './../shared';
 import { HomeComponent, LinkListComponent, LinksResolver } from './index';
 
 
@@ -15,6 +15,13 @@ import { HomeComponent, LinkListComponent, LinksResolver } from './index';
           links: LinksResolver,
         },
       },
+      {
+        path: 'home/:id',
+        component: HomeComponent,
+        resolve: {
+          links: LinksResolver,
+        },
+      }
     ]),
   ],
   exports: [

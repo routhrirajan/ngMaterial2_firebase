@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CategoriesService } from '../services'
 import { ICategories } from '../interfaces';
-import { MdSnackBar, MdDialog, MdDialogRef } from '@angular/material'
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material'
 import { CategoryDetailComponent } from '../category-detail'
 @Component({
   selector: 'app-categories-list',
@@ -12,8 +12,8 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
   categories: any;
   constructor(
     public _categoriesService: CategoriesService,
-    private _snackBar: MdSnackBar,
-    private _dialog: MdDialog
+    private _snackBar: MatSnackBar,
+    private _dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
     this._snackBar.open('Category deleted', 'OK');
   }
   editCategory(category: ICategories) {
-    let _dialogRef: MdDialogRef<CategoryDetailComponent>;
+    let _dialogRef: MatDialogRef<CategoryDetailComponent>;
     _dialogRef = this._dialog.open(CategoryDetailComponent);
     _dialogRef.componentInstance.category = category;
     _dialogRef.componentInstance.editMode = true;

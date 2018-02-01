@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -10,7 +10,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 export class EnquireComponent implements OnInit {
   enquiryForm: FormGroup;
-  constructor(public dialogRef: MdDialogRef<EnquireComponent>,
+  constructor(public dialogRef: MatDialogRef<EnquireComponent>,
     private fb: FormBuilder
   ) { }
 

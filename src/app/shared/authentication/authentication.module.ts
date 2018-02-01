@@ -11,7 +11,7 @@ import { AuthenticationService } from './authentication.service'
  */
 @NgModule({
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),    
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],
 })
