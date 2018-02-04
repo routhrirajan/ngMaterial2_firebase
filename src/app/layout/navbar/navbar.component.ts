@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ toggleSidebarStatus = false;
 isLoggedIn = false;
   constructor(
     private afAuth: AngularFireAuth,
+    private router: Router
   ) {
    }
   onThemeChange() {
@@ -25,6 +27,8 @@ isLoggedIn = false;
     this.toggleSidebar.emit(this.toggleSidebarStatus);
   }
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }

@@ -1,10 +1,10 @@
 <div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-  <mat-card *ngFor="let link of links | async">      
-  <a [routerLink]="['/links-detail', link.$key]">
+  <mat-card *ngFor="let link of links | async" [routerLink]="['/links-detail', link.$key]">      
+  
     <mat-card-content>
     <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
     </mat-card-content>
-   </a>
+   
   <mat-card-footer align="end">   
       <button mat-icon-button [routerLink]="['/links-detail', link.$key]" >
           <mat-icon class="mat-24">mode_edit</mat-icon>

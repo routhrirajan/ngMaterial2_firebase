@@ -4,7 +4,6 @@ import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SigninModule } from './signin/signin.module';
 import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { EnquireModule } from './enquire/enquire.module';
@@ -20,7 +19,6 @@ import { UploadModule } from './uploads/shared/upload.module';
   imports: [
     HomeModule,
     SharedModule,
-    SigninModule,
     LoginModule,
     LayoutModule,
     EnquireModule,

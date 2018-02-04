@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module'
-import { EnquireComponent, EnquiryService } from './index';
+import { EnquireComponent, EnquiryService, EnquireListComponent } from './index';
+import { EnquiryRoutingModule } from 'app/enquire/enquiry-routing.module';
 
 @NgModule({
     imports: [
-        SharedModule
+        SharedModule,
+        EnquiryRoutingModule
     ],
     exports: [
-        EnquireComponent
+        EnquireComponent,
+        EnquireListComponent
     ],
     declarations: [
-        EnquireComponent
+        EnquireComponent,
+        EnquireListComponent
     ],
-    entryComponents:[
-        EnquireComponent
+    entryComponents: [
+                EnquireComponent
     ],
     providers: [EnquiryService],
 })
-export class EnquireModule{}
+export class EnquireModule { }

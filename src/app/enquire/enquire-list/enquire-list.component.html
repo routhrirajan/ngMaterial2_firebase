@@ -1,0 +1,28 @@
+<mat-card *ngFor="let enquiry of enquiries | async">
+    <mat-card-header>        
+        <mat-card-title><h3>{{enquiry.fullName}}</h3></mat-card-title>  
+        <span fxFlex></span> 
+        <button mat-raised-button color="accent" (click)="CreateUser(enquiry.email)">
+         Create as a User
+        </button>          
+    </mat-card-header>      
+    <mat-card-content>
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>:</td>
+                <td>{{enquiry.email}}</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>:</td>
+                <td>{{enquiry.mobile}}</td>
+            </tr>
+            <tr>
+                <td>Details</td>
+                <td>:</td>
+                <td>{{enquiry.details}}</td>
+            </tr>
+        </table>                             
+    </mat-card-content>    
+</mat-card>

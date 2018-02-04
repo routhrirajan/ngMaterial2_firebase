@@ -1,6 +1,7 @@
-export interface IEnquireUser{
+export interface IEnquireUser {
     fullName: string,
     email: string,
     mobile: number,
-    details: string
+    details: string,
+    registered: boolean
 }

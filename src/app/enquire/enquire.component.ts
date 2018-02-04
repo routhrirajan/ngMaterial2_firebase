@@ -16,10 +16,11 @@ export class EnquireComponent implements OnInit {
 
   ngOnInit() {
     this.enquiryForm = this.fb.group({
-      fullName: ['',[Validators.required, Validators.minLength(3)]],
-      email: ['',[Validators.required, Validators.pattern(EMAIL_REGEX)]],
-      mobile: ['',Validators.required],
-      details: ['', Validators.required]
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
+      mobile: ['', Validators.required],
+      details: ['', Validators.required],
+      registered: false
     })
   }
 }

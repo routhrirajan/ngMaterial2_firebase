@@ -9,6 +9,7 @@ import { NotifyService } from '../common/notify.service';
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
 import { IUser } from 'app/login/user.interface';
+import { MatSnackBar } from '@angular/material';
 
 
 @Injectable()
@@ -17,9 +18,10 @@ export class AuthenticationService {
   user: Observable<IUser | null>;
 
   constructor(private afAuth: AngularFireAuth,
-              private afs: AngularFirestore,
-              private router: Router,
-              private notify: NotifyService) {
+    private afs: AngularFirestore,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private notify: NotifyService) {
 
     this.user = this.afAuth.authState
       .switchMap((user) => {
@@ -58,7 +60,7 @@ export class AuthenticationService {
         this.notify.update('Welcome to Firestarter!!!', 'success');
         return this.updateUserData(credential.user);
       })
-      .catch((error) => this.handleError(error) );
+      .catch((error) => this.handleError(error));
   }
 
   //// Anonymous Auth ////
@@ -79,21 +81,29 @@ export class AuthenticationService {
   emailSignUp(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.verifyEmail(user);
+        this.snackBar.open('User Created', 'Close' );
         return this.updateUserData(user); // if using firestore
       })
-      .catch((error) => this.handleError(error) );
+      .catch((error) => this.handleError(error));
   }
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.notify.update('Welcome to Firestarter!!!', 'success')
+        this.snackBar.open('Login Success', 'Close' );
         return this.updateUserData(user); // if using firestore
       })
-      .catch((error) => this.handleError(error) );
+      .catch((error) => this.handleError(error));
   }
-
+  // Sends email verification
+  verifyEmail(user) {
+    user.sendEmailVerification().then(function () {
+      // Email sent.
+    }).catch(function (error) {
+      // An error happened.
+    });
+  }
   // Sends email allowing user to reset password
   resetPassword(email: string) {
     const fbAuth = firebase.auth();
@@ -105,7 +115,7 @@ export class AuthenticationService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['/']);
+      this.router.navigate(['/']);
     });
   }
 
@@ -113,6 +123,7 @@ export class AuthenticationService {
   private handleError(error: Error) {
     console.error(error);
     this.notify.update(error.message, 'error');
+    this.snackBar.open(error.message, 'Close' );
   }
 
   // Sets user data to firestore after succesful login
@@ -124,7 +135,7 @@ export class AuthenticationService {
       uid: user.uid,
       email: user.email || null,
       displayName: user.displayName || 'nameless user',
-      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ',
+      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ'
     };
     return userRef.set(data);
   }

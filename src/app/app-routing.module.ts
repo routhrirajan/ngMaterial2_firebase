@@ -7,8 +7,7 @@ const appRoutes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'home',
-  },
-  //{ path: 'uploads', loadChildren: "./uploads/shared/upload.module#UploadModule" }
+  }
 ];
 
 @NgModule({

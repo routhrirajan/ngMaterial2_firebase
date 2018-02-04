@@ -1,1 +1,1 @@
-export * from './enquiry.service'
+export * from './enquiry.service';
