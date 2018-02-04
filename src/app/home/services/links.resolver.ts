@@ -19,8 +19,7 @@ export class LinksResolver implements Resolve<Observable<ILink[]>> {
         public _linksService: LinksService,
     ) { }
     resolve(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
+        route: ActivatedRouteSnapshot
     ): Promise<Observable<ILink[]>> {
         if (route.params['id']) {
         this.links = this._linksService.getLinksListByCategory(route.params['id']);

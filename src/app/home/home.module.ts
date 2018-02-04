@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent,LinkListComponent,LinksResolver } from './index'
+import { HomeComponent, LinkListComponent, LinksResolver } from './index'
 import { HomeRoutingModule } from './home-routing.module'
 import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
-  imports: [    
+  imports: [
     SharedModule,
     HomeRoutingModule,
   ],
@@ -16,7 +16,7 @@ import { SharedModule } from './../shared/shared.module';
     HomeComponent,
     LinkListComponent
   ],
-  providers:[
+  providers: [
     LinksResolver
   ],
 })

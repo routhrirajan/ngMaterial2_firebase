@@ -13,3 +13,10 @@ mat-card{
 mat-card-content{     
     margin-bottom: 0px;   
 }
+.truncate {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: lowercase;
+  }

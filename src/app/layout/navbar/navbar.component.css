@@ -9,3 +9,19 @@
 .logo{
     padding-top: 20px;
 }
+.avatar{
+    display: inline-block;
+    outline: none;
+    vertical-align: middle;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    color: #000;
+    cursor: pointer;
+    text-decoration: none;
+    
+    flex: 0 1 auto;
+}

@@ -1,45 +1,13 @@
-<!-- <form [formGroup]="userForm"  *ngIf="newUser"  (ngSubmit)="signup()">
-
-  <h3>New User Signup</h3>
-  <p class="button is-small" (click)="toggleForm()">Already Registered?</p>
-  <hr>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" class="input"
-         formControlName="email" required >
-
-  <div *ngIf="formErrors.email" class="notification is-danger">
-    {{ formErrors.email }}
-  </div>
-
-  <label for="password">Password</label>
-  <input type="password" id="password" class="input"
-         formControlName="password" required >
-
-  <div *ngIf="formErrors.password" class="notification is-danger">
-    {{ formErrors.password }}
-  </div>
-
-  <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
-  <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
-
-</form> -->
-<div class="container" fxLayout="column" fxLayoutAlign="center center" fxFill>
- <!--  <div class="login">
-    <mat-toolbar color="primary">
-      <h1>Log In</h1>
-    </mat-toolbar>
-    <mat-card> -->
-      <mat-card fxFlex="50%" fxFlex.gt-sm="100%" class="login-card login-header">
-        <mat-toolbar color="primary">Login</mat-toolbar>
-        <mat-card-content>
+<div fxLayout="row" fxLayoutAlign="center center" fxFill>
+  <mat-card fxFlex="50%" fxFlex.xs="100%" class="login-card login-header">
+    <mat-toolbar color="primary">Login</mat-toolbar>
+    <mat-card-content>
       <form [formGroup]="userForm" (ngSubmit)="login()">
-
         <div fxLayout="column" fxLayoutGap="8px">
           <mat-form-field>
             <input matInput #email type="text" formControlName="email">
             <mat-placeholder>
-              <mat-icon>account_box</mat-icon> Email</mat-placeholder>
+              <mat-icon>mail</mat-icon> Email</mat-placeholder>
             <mat-error *ngIf="formErrors.email">
               {{ formErrors.email }}
             </mat-error>
@@ -52,34 +20,13 @@
               {{ formErrors.password }}
             </mat-error>
           </mat-form-field>
-          <mat-dialog-actions align="end">          
-              <button mat-raised-button color="primary" [disabled]="!userForm.valid">Submit</button>
-            </mat-dialog-actions>
-            <!-- <label for="email">Email</label>
-  <input matInput type="email" id="email" 
-         formControlName="email" required >
-  
-  <div *ngIf="formErrors.email" class="help is-danger">
-    {{ formErrors.email }}
-  </div>
-    </mat-input-container>
-  <label for="password">Password</label>
-  <input matInput type="password" id="password"
-         formControlName="password" required >
-
-  <div *ngIf="formErrors.password" class="help is-danger">
-    {{ formErrors.password }}
-  </div> -->
-
-            <!-- <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button> -->
-
-
-            <a mat-raised-button color="accent" *ngIf="!passReset && userForm.controls.email.valid" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
-            <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
+          <mat-dialog-actions align="end">
+            <button mat-raised-button color="primary" [disabled]="!userForm.valid">Submit</button>
+          </mat-dialog-actions>
+          <a mat-raised-button color="accent" *ngIf="!passReset && userForm.controls.email.valid" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
+          <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
-    <!-- </mat-card>
-  </div>-->
-</div> 
+</div>

@@ -44,14 +44,6 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  // toggleForm() {
-  //   this.newUser = !this.newUser;
-  // }
-
-  // signup() {
-  //   this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password']);
-  // }
-
   login() {
     this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
     .then(() => this._router.navigate(['/home']));
@@ -70,6 +62,7 @@ export class LoginComponent implements OnInit {
       ]],
       'password': ['', [
         //Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        Validators.required,
         Validators.minLength(6),
         Validators.maxLength(25),
       ]],

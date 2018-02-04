@@ -11,11 +11,13 @@ export class EnquiryService {
   constructor(private angularFiredb: AngularFireDatabase) {
     this.enquiry = angularFiredb.list('/enquiry');
   }
-  addEnquiry(detail: IEnquireUser) {
-    //this.validateEmail(detail.email);
+   // Return an observable list of Items
+   getEnquiredList(): Observable<IEnquireUser[]> {
+    return this.enquiry.snapshotChanges().map((arr) => {
+      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
+    });
   }
-  // validateEmail(email: string): void {
-  //     this.isEmailExists = this.angularFiredb.list('/enquiry')
-  //     console.log(this.isEmailExists);
-  // }
+  addEnquiry(detail: IEnquireUser) {
+    this.enquiry.push(detail);
+  }
 }
