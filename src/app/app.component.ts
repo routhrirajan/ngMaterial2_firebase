@@ -7,7 +7,7 @@ import {
   NavigationCancel,
   NavigationError
 } from '@angular/router'
-import {Component, Directive, NgZone, Renderer, ElementRef, ViewChild} from '@angular/core'
+import {Component, NgZone, Renderer, ElementRef, ViewChild} from '@angular/core'
 import { AnimationsService } from './shared/animations/index';
 
 @Component({
@@ -25,6 +25,7 @@ export class AppComponent {
   // see template snippet below this script
   @ViewChild('spinnerElement')
   spinnerElement: ElementRef
+  
   /**
    * Constructor of the class
    *
@@ -86,14 +87,5 @@ export class AppComponent {
   }
   onThemeChange(status: boolean) {
     this.isDarkTheme = status;
-  }
-  toggleSidebar(status: boolean) {
-    if (status) {
-      document.getElementById('mySidenav').style.width = '250px';
-      document.getElementById('main').style.marginLeft = '250px';
-    } else {
-      document.getElementById('mySidenav').style.width = '0';
-      document.getElementById('main').style.marginLeft = '0';
-    }
-  }
+  }  
 }

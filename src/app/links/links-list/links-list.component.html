@@ -1,6 +1,6 @@
-<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-  <mat-card *ngFor="let link of links | async" [routerLink]="['/links-detail', link.$key]">      
-  
+<div fxLayout="row wrap">  
+<div *ngFor="let link of links | async" style="padding: 10px 10px 10px 10px">
+  <mat-card [routerLink]="['/links-detail', link.$key]">     
     <mat-card-content>
     <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
     </mat-card-content>
@@ -14,4 +14,5 @@
           </button>     
   </mat-card-footer>
   </mat-card>  
+</div>
 </div>

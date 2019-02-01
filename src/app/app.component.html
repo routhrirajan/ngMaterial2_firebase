@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
+<!-- <div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
         <div class="loading-overlay" #spinnerElement style="display:none">
                 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
             </div>
@@ -19,4 +19,28 @@
     <footer>
         <router-outlet name="footer"></router-outlet>
     </footer>
-</div>
+</div> -->
+<mat-sidenav-container autosize >
+    <mat-sidenav #drawer mode="side">
+        <router-outlet name="sidebar"></router-outlet>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div>            
+            <div class="loading-overlay" #spinnerElement style="display:none">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+            <header>                
+                <app-navbar [isDarkTheme]='isDarkTheme' (notify)='onThemeChange($event)' (toggleSidebar)="drawer.toggle()"></app-navbar>
+            </header>
+            <article [class.animation-content-out]="activateAnimation" [class.animation-content-in]="!activateAnimation">
+                <div id="main">
+                    <app-notification-message></app-notification-message>
+                    <router-outlet></router-outlet>
+                </div>
+            </article>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<footer>
+    <router-outlet name="footer"></router-outlet>
+</footer>

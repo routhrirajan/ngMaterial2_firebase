@@ -1,7 +1,7 @@
 <h3>Fill in your contact information, we will contact you..</h3>
 <form (ngSubmit)="dialogRef.close(enquiryForm)" novalidate [formGroup]="enquiryForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <mat-input-container>
+    <mat-form-field>
       <input matInput type="text" placeholder="Full name" formControlName="fullName">
       <mat-error *ngIf="enquiryForm.get('fullName').hasError('required') && enquiryForm.get('fullName').touched">
         Name is <strong>required</strong>
@@ -9,8 +9,8 @@
       <mat-error *ngIf="enquiryForm.get('fullName').hasError('minlength') && enquiryForm.get('fullName').touched">
         Name must have minimum<strong> 3 characters </strong>
       </mat-error>
-    </mat-input-container>
-    <mat-input-container>
+    </mat-form-field>
+    <mat-form-field>
       <input matInput asyncValidator type="email" placeholder="E-mail" formControlName="email">
       <mat-error *ngIf="enquiryForm.get('email').hasError('pattern') && enquiryForm.get('email').touched">
         Please enter a valid email address
@@ -22,19 +22,19 @@
         Email is <strong>already registered</strong>
       </mat-error>
       
-    </mat-input-container>
-    <mat-input-container>
+    </mat-form-field>
+    <mat-form-field>
       <input matInput type="tel" placeholder="Mobile" formControlName="mobile">
       <mat-error *ngIf="enquiryForm.get('mobile').hasError('required') && enquiryForm.get('mobile').touched">
         Mobile is <strong>required</strong>
       </mat-error>
-    </mat-input-container>
-    <mat-input-container>
+    </mat-form-field>
+    <mat-form-field>
       <textarea matInput placeholder="Details" rows="5" cols="60" formControlName="details"></textarea>
       <mat-error *ngIf="enquiryForm.get('details').hasError('required') && enquiryForm.get('details').touched">
         Details are <strong>required</strong>
       </mat-error>
-    </mat-input-container>
+    </mat-form-field>
   </div>
   <mat-dialog-actions align="end">
     <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>

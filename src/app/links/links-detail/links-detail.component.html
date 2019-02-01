@@ -1,7 +1,7 @@
 <h3>Manage Links</h3>
 <form *ngIf="linksForm" novalidate [formGroup]="linksForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <mat-input-container>        
+    <mat-form-field>        
       <input matInput type="text" placeholder="Name" formControlName="name" >
       <mat-error *ngIf="linksForm.get('name').hasError('required') && linksForm.get('name').touched">
         Name is <strong>required</strong>
@@ -9,7 +9,7 @@
       <mat-error *ngIf="linksForm.get('name').hasError('minlength') && linksForm.get('name').touched">
         Name must have minimum<strong> 3 characters </strong>
       </mat-error>                
-    </mat-input-container>      
+    </mat-form-field>      
      <section>     
      <button mat-raised-button color="accent" (click)="openChooseGallery()" >Choose from gallery</button>
      
@@ -17,10 +17,10 @@
      <section>
         <img [src]="linksForm?.get('image').value || '' " width="100px">
      </section>  
-    <mat-input-container>
+    <mat-form-field>
         <span matPrefix>http:// &nbsp;</span>
         <input matInput type="url" placeholder="url" formControlName="url">     
-    </mat-input-container>
+    </mat-form-field>
     <mat-select formControlName="category" placeholder="Select Category">
         <mat-option *ngFor="let category of categories | async" [value]="category.name">
             {{category.name}}

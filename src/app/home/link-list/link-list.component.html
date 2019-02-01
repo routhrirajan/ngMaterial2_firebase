@@ -1,23 +1,25 @@
-<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">   
-  <mat-card *ngFor="let link of links | async">    
-    <a *ngIf="!(afAuth.authState | async)" [routerLink]="['/login']">
-      <mat-card-content>
-      <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
-      </mat-card-content>
-     </a>
-     
-    <a *ngIf="afAuth.authState | async" target="_blank" [href]="link.url">
-    <mat-card-content>
-    <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
-    </mat-card-content>
-   </a>
-  
-  <mat-card-footer>    
-  <button class="mat-card-favorites" mat-icon-button>
-      <mat-icon>favorite_border</mat-icon>
-    </button> 
-    <a class="truncate" *ngIf="afAuth.authState | async" mat-button target="_blank" [href]="link.url">{{link.name}}</a>
-    <a class="truncate" *ngIf="!(afAuth.authState | async)" mat-button [routerLink]="['/login']">{{link.name}}</a>    
-  </mat-card-footer>
-  </mat-card>  
+<div fxLayout="row wrap">
+  <div *ngFor="let link of links | async" style="padding: 10px 10px 10px 10px">
+    <mat-card>
+      <a *ngIf="!(afAuth.authState | async)" [routerLink]="['/login']">
+        <mat-card-content>
+          <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
+        </mat-card-content>
+      </a>
+
+      <a *ngIf="afAuth.authState | async" target="_blank" [href]="link.url">
+        <mat-card-content>
+          <img mat-card-image [src]="link.image == '' ? 'assets/images/noimage.jpg' : link.image">
+        </mat-card-content>
+      </a>
+
+      <mat-card-footer>
+        <button class="mat-card-favorites" mat-icon-button>
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <a class="truncate" *ngIf="afAuth.authState | async" mat-button target="_blank" [href]="link.url">{{link.name}}</a>
+        <a class="truncate" *ngIf="!(afAuth.authState | async)" mat-button [routerLink]="['/login']">{{link.name}}</a>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 </div>
