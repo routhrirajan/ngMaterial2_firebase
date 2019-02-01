@@ -1,8 +1,8 @@
 <h3>File Uploads</h3>
 <upload-form></upload-form>
 <hr>
-<div fxLayout="row" fxLayoutGap="10px" fxLayoutWrap style="padding-bottom:10px">
-    <div *ngFor="let upload of uploads | async">
+<div fxLayout="row wrap">
+    <div *ngFor="let upload of uploads | async" style="padding: 10px 10px 10px 10px">
         <upload-detail [upload]='upload'></upload-detail>
       </div>
 </div>

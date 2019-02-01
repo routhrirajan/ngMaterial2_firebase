@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Upload } from './upload';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import * as firebase from 'firebase';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { storage } from 'firebase';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -32,11 +32,11 @@ export class UploadService {
 
   // Executes the file uploading to firebase https://firebase.google.com/docs/storage/web/upload-files
   pushUpload(upload: Upload) {
-    const storageRef = firebase.storage().ref();
+    const storageRef = storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
 
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot: firebase.storage.UploadTaskSnapshot) =>  {
+    uploadTask.on(storage.TaskEvent.STATE_CHANGED,
+      (snapshot: storage.UploadTaskSnapshot) =>  {
         // upload in progress
         const snap = snapshot;
         upload.progress = (snap.bytesTransferred / snap.totalBytes) * 100
@@ -72,7 +72,7 @@ export class UploadService {
   // Firebase files must have unique names in their respective storage dir
   // So the name serves as a unique key
   private deleteFileStorage(name: string) {
-    const storageRef = firebase.storage().ref();
+    const storageRef = storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete()
   }
 }

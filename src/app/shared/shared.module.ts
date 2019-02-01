@@ -26,12 +26,12 @@ import {
   MatIconRegistry
        } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { MomentModule } from 'angular2-moment';
-import { Ng2Webstorage } from 'ngx-webstorage';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+
+//import { MomentModule } from 'angular2-moment';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 import 'hammerjs';
 
@@ -61,7 +61,7 @@ import { NotificationMessageComponent } from 'app/notification/notification-mess
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    MomentModule,
+    //MomentModule,
 
     MatButtonModule,
     MatSnackBarModule,
@@ -71,7 +71,7 @@ import { NotificationMessageComponent } from 'app/notification/notification-mess
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    Ng2Webstorage,
+    NgxWebstorageModule.forRoot(),
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
@@ -97,8 +97,8 @@ import { NotificationMessageComponent } from 'app/notification/notification-mess
     BrowserAnimationsModule,
     FlexLayoutModule,
     AngularFireModule,
-    MomentModule,
-    Ng2Webstorage,
+    //MomentModule,
+    NgxWebstorageModule,
     NotificationMessageComponent,
 
     MatButtonModule,

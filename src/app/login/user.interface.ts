@@ -1,8 +1,8 @@
 export interface IUser {
-    uid: string;
+    displayName?: string | null;
     email?: string | null;
-    photoURL?: string;
-    displayName?: string;
-    password?: string;
-    phoneNumber?: number;
+    phoneNumber?: string | null;
+    photoURL?: string | null;
+    providerId?: string;
+    uid?: string;
 }

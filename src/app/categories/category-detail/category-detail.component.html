@@ -1,7 +1,7 @@
 <h3>Manage Category</h3>
 <form (ngSubmit)="categoryDialogRef.close(categoryForm)" novalidate [formGroup]="categoryForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <mat-input-container>
+    <mat-form-field>
       <input matInput type="text" placeholder="Name" formControlName="name" >
       <mat-error *ngIf="categoryForm.get('name').hasError('required') && categoryForm.get('name').touched">
         Name is <strong>required</strong>
@@ -12,10 +12,10 @@
       <mat-error *ngIf="categoryForm.get('name').hasError('validCategory') && categoryForm.get('name').touched">
         Category name already exists!!!
       </mat-error>      
-    </mat-input-container>      
-     <mat-input-container>
+    </mat-form-field>      
+     <mat-form-field>
      <input matInput type="text" placeholder="Description" formControlName="description">     
-    </mat-input-container>    
+    </mat-form-field>    
      <section>
       <mat-slide-toggle matInput formControlName="active">
         Status

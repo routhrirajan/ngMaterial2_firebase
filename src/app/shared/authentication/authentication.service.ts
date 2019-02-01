@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+//import { firebase } from '@firebase/app';
+import { auth } from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { NotifyService } from '../common/notify.service';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IUser } from 'app/login/user.interface';
 import { MatSnackBar } from '@angular/material';
@@ -22,39 +23,39 @@ export class AuthenticationService {
     private router: Router,
     private snackBar: MatSnackBar,
     private notify: NotifyService) {
-
-    this.user = this.afAuth.authState
-      .switchMap((user) => {
-        if (user) {
-          return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
-        } else {
-          return Observable.of(null);
-        }
-      });
+      afs.firestore.settings({ timestampsInSnapshots: true });
+      this.user = this.afAuth.authState.pipe(
+        switchMap(user => {
+          if (user) {
+            return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
+          } else {
+            return of(null);
+          }
+        }));
   }
 
   ////// OAuth Methods /////
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   githubLogin() {
-    const provider = new firebase.auth.GithubAuthProvider();
+    const provider = new auth.GithubAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   facebookLogin() {
-    const provider = new firebase.auth.FacebookAuthProvider();
+    const provider = new auth.FacebookAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   twitterLogin() {
-    const provider = new firebase.auth.TwitterAuthProvider();
+    const provider = new auth.TwitterAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  private oAuthLogin(provider: firebase.auth.AuthProvider) {
+  private oAuthLogin(provider: auth.AuthProvider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
@@ -68,7 +69,7 @@ export class AuthenticationService {
     return this.afAuth.auth.signInAnonymously()
       .then((user) => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
-        return this.updateUserData(user); // if using firestore
+        return this.updateUserData(user.user); // if using firestore
       })
       .catch((error) => {
         console.error(error.code);
@@ -83,7 +84,7 @@ export class AuthenticationService {
       .then((user) => {
         this.verifyEmail(user);
         this.snackBar.open('User Created', 'Close' );
-        return this.updateUserData(user); // if using firestore
+        return this.updateUserData(user.user); // if using firestore
       })
       .catch((error) => this.handleError(error));
   }
@@ -92,7 +93,7 @@ export class AuthenticationService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.snackBar.open('Login Success', 'Close' );
-        return this.updateUserData(user); // if using firestore
+        return this.updateUserData(user.user); // if using firestore
       })
       .catch((error) => this.handleError(error));
   }
@@ -106,7 +107,7 @@ export class AuthenticationService {
   }
   // Sends email allowing user to reset password
   resetPassword(email: string) {
-    const fbAuth = firebase.auth();
+    const fbAuth = auth();
 
     return fbAuth.sendPasswordResetEmail(email)
       .then(() => this.notify.update('Password update email sent', 'info'))
