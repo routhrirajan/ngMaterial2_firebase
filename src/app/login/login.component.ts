@@ -3,6 +3,9 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 
 import { AuthenticationService } from '../shared/authentication/authentication.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EnquireComponent, EnquiryService } from 'app/enquire';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 type UserFields = 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
@@ -37,7 +40,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    private _router: Router
+    private _router: Router,
+    private enquireDialog: MatDialog,
+    private snackbar: MatSnackBar,
+    private _enquiryService: EnquiryService
   ) { }
 
   ngOnInit() {
@@ -69,6 +75,20 @@ export class LoginComponent implements OnInit {
 
     this.userForm.valueChanges.subscribe((data) => this.onValueChanged(data));
     this.onValueChanged(); // reset validation messages
+  }
+
+  openEnquireDialog() {
+    this.enquireDialog.open(EnquireComponent).afterClosed()
+    .filter(result => !!result)
+    .subscribe(enquireUser => {
+      this._enquiryService.addEnquiry(enquireUser.value);
+      this.snackbar.open(
+       'Your enquiry has been submitted. Our representative will call you shortly',
+       'OK',
+      {
+        duration: 6000
+      });
+    });
   }
 
   // Updates validation state on form changes.
