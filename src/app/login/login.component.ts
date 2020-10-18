@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
     this.buildForm();
   }
 
-  login() {
-    this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
-    .then(() => this._router.navigate(['/home']));
-  }
+  // login() {
+  //   this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
+  //   .then(() => this._router.navigate(['/home']));
+  // }
 
   resetPassword() {
     this.auth.resetPassword(this.userForm.value['email'])

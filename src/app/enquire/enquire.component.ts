@@ -10,7 +10,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 export class EnquireComponent implements OnInit {
   enquiryForm: FormGroup;
-  constructor(public dialogRef: MatDialogRef<EnquireComponent>,
+  constructor(public dialogRefEnquiry: MatDialogRef<EnquireComponent>,
     private fb: FormBuilder
   ) { }
 

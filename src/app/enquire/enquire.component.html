@@ -1,5 +1,5 @@
 <h3>Fill in your contact information, we will contact you..</h3>
-<form (ngSubmit)="dialogRef.close(enquiryForm)" novalidate [formGroup]="enquiryForm">
+<form (ngSubmit)="dialogRefEnquiry.close(enquiryForm)" novalidate [formGroup]="enquiryForm">
   <div fxLayout="column" fxLayoutGap="8px">
     <mat-form-field>
       <input matInput type="text" placeholder="Full name" formControlName="fullName">
