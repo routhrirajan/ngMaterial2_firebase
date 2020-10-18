@@ -2,10 +2,14 @@
   <button mat-icon-button (click)="onOpenSidebar()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span fxHide.xs>
-    <!-- <img src="assets/images/rcslogo14.png" width="100px" alt="RCS Seva">   -->
-    Digital Sevai
+  <span>
+    <mat-icon class="material-icons mat-48 logo">
+      rounded_corner
+    </mat-icon>
   </span>
+  <span fxHide.xs class="logo-text">IGITAL&nbsp;</span>
+  <span fxHide.xs class="logo-s">&nbsp;S</span>
+  <span fxHide.xs class="logo-text">EVAI</span>
   <span fxFlex></span>
   <a mat-icon-button [routerLink]="['/home']" routerLinkActive="active">
     <mat-icon>home</mat-icon>

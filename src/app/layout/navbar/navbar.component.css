@@ -7,7 +7,18 @@
     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
 }
 .logo{
-    padding-top: 20px;
+    width: 48px;
+    color: #FF9933;
+}
+.logo-text{
+    font-family: 'Orbitron', serif;
+    font-size: 2rem;
+    font-variant: all-small-caps;
+}
+.logo-s{
+    font-size: 48px;
+    color:#138808;
+    font-family: 'Martel', serif;
 }
 .avatar{
     display: inline-block;
