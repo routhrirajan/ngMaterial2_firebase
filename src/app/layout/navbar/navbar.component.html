@@ -15,8 +15,9 @@
     <mat-icon>home</mat-icon>
   </a>
   <span *ngIf="afAuth.authState | async as user">Hey, {{ user.email }}</span>
-  <a mat-button *ngIf="!(afAuth.authState | async)" [routerLink]="['/login']" routerLinkActive="active">Login</a>  
+  <a mat-button *ngIf="!(afAuth.authState | async)" (click)="openLoginDialog()">Login</a>  
   <a mat-button *ngIf="afAuth.authState | async" (click)="logout()" routerLinkActive="active">Logout</a>  
+  <a mat-button *ngIf="!(afAuth.authState | async)" (click)="openEnquireDialog()">Register</a>  
  
   <button *ngIf="afAuth.authState | async" mat-icon-button [matMenuTriggerFor]="themeMenu">
       <mat-icon>more_vert</mat-icon>

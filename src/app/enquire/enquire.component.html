@@ -30,6 +30,12 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
+      <input matInput type="number" placeholder="Aadhar No.(UID)" formControlName="uid">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="PAN No." formControlName="pan">
+    </mat-form-field>
+    <mat-form-field>
       <textarea matInput placeholder="Details" rows="5" cols="60" formControlName="details"></textarea>
       <mat-error *ngIf="enquiryForm.get('details').hasError('required') && enquiryForm.get('details').touched">
         Details are <strong>required</strong>

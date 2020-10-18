@@ -123,7 +123,7 @@ export class AuthenticationService {
   // If error, console log and notify user
   private handleError(error: Error) {
     console.error(error);
-    this.notify.update(error.message, 'error');
+    //this.notify.update(error.message, 'error');
     this.snackBar.open(error.message, 'Close' );
   }
 

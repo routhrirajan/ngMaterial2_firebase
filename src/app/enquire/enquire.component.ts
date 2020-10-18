@@ -19,6 +19,8 @@ export class EnquireComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
       mobile: ['', Validators.required],
+      uid: [''],
+      pan: [''],
       details: ['', Validators.required],
       registered: false
     })
