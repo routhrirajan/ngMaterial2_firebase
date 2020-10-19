@@ -23,7 +23,10 @@ import {
   MatCardModule,
   MatTabsModule,
   MatIconModule,
-  MatIconRegistry
+  MatIconRegistry,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
        } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
@@ -118,6 +121,9 @@ import { NotificationMessageComponent } from 'app/notification/notification-mess
     MatCardModule,
     MatIconModule,
     MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     ...Directives,
   ],
 })

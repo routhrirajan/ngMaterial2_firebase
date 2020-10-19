@@ -42,18 +42,5 @@ export class HomeComponent extends Animations implements OnInit {
     });
     this.categories = this._categoriesService.getCategoriesList();
   }
-  openEnquireDialog() {
-    this.enquireDialog.open(EnquireComponent).afterClosed()
-    .filter(result => !!result)
-    .subscribe(enquireUser => {
-      this._enquiryService.addEnquiry(enquireUser.value);
-      this.snackbar.open(
-       'Your enquiry has been submitted. Our representative will call you shortly',
-       'OK',
-      {
-        duration: 6000
-      });
-    });
-  }
 
 }

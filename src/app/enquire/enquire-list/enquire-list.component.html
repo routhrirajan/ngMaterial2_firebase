@@ -1,28 +1,45 @@
-<mat-card *ngFor="let enquiry of enquiries | async">
-    <mat-card-header>        
-        <mat-card-title><h3>{{enquiry.fullName}}</h3></mat-card-title>  
-        <span fxFlex></span> 
-        <button mat-raised-button color="accent" (click)="CreateUser(enquiry.email)">
-         Create as a User
-        </button>          
-    </mat-card-header>      
-    <mat-card-content>
-        <table>
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td>{{enquiry.email}}</td>
-            </tr>
-            <tr>
-                <td>Mobile</td>
-                <td>:</td>
-                <td>{{enquiry.mobile}}</td>
-            </tr>
-            <tr>
-                <td>Details</td>
-                <td>:</td>
-                <td>{{enquiry.details}}</td>
-            </tr>
-        </table>                             
-    </mat-card-content>    
-</mat-card>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+        <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fullName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fullName}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="mobile">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="uid">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.uid}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="pan">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> PAN No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.pan}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

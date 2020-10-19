@@ -5,19 +5,20 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EnquiryService {
-  enquiry: AngularFireList<IEnquireUser>;
-  emailList: AngularFireObject<IEnquireUser>;
-  isEmailExists: Observable<IEnquireUser>;
+  enquiry: Observable<any[]>;
   constructor(private angularFiredb: AngularFireDatabase) {
-    this.enquiry = angularFiredb.list('/enquiry');
+    this.enquiry = angularFiredb.list('enquiry', ref => ref.orderByChild('registered').equalTo(false)).valueChanges();
+    //this.db.list('/flamelink/users', ref => ref.orderByChild('id').equalTo(id)).valueChanges().subscribe(data => { console.log(data); anotherMethod(data); })
   }
    // Return an observable list of Items
    getEnquiredList(): Observable<IEnquireUser[]> {
-    return this.enquiry.snapshotChanges().map((arr) => {
-      return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
-    });
+     return this.enquiry;
+    // return this.enquiry.snapshotChanges().map((arr) => {
+    //   return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
+    //});
   }
   addEnquiry(detail: IEnquireUser) {
-    this.enquiry.push(detail);
+    const enquiriesRef = this.angularFiredb.list('enquiry');
+    enquiriesRef.push(detail);
   }
 }
