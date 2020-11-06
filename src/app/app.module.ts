@@ -11,10 +11,12 @@ import { CategoriesModule } from './categories/categories.module';
 import { UsersModule } from './users/users.module';
 import { LinksModule } from './links/links.module';
 import { UploadModule } from './uploads/shared/upload.module';
+import { DefaultModule } from './default/default.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     HomeModule,
@@ -26,7 +28,8 @@ import { UploadModule } from './uploads/shared/upload.module';
     UsersModule,
     LinksModule,
     UploadModule,
-    AppRoutingModule,
+    DefaultModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

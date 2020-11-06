@@ -16,7 +16,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class EnquireListComponent implements OnInit {
     enquiries: Observable<IEnquireUser[]>;
-    displayedColumns: string[] = ['fullName', 'email', 'mobile', 'uid', 'pan'];
+    displayedColumns: string[] = ['fullName', 'email', 'mobile', 'aid', 'pan','action'];
     
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;

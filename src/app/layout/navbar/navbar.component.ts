@@ -39,7 +39,7 @@ isLoggedIn = false;
   }
   logout() {
     this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/default']);
     });
   }
 

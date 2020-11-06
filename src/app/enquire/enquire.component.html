@@ -21,7 +21,7 @@
       <mat-error *ngIf="enquiryForm.get('email').hasError('asyncInvalid') && enquiryForm.get('email').touched">
         Email is <strong>already registered</strong>
       </mat-error>
-      
+
     </mat-form-field>
     <mat-form-field>
       <input matInput type="tel" placeholder="Mobile" formControlName="mobile">
@@ -30,17 +30,23 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" placeholder="Aadhar No.(UID)" formControlName="uid">
+      <input matInput type="number" placeholder="Aadhar No.(UID)" formControlName="aid">
     </mat-form-field>
     <mat-form-field>
       <input matInput type="text" placeholder="PAN No." formControlName="pan">
     </mat-form-field>
+    <mat-radio-group aria-label="Select the subscription" formControlName="role">
+      <mat-radio-button value="Distributor">Distributor</mat-radio-button>
+      <mat-radio-button value="Retailer">Retailer</mat-radio-button>
+    </mat-radio-group>
+
     <mat-form-field>
       <textarea matInput placeholder="Details" rows="5" cols="60" formControlName="details"></textarea>
       <mat-error *ngIf="enquiryForm.get('details').hasError('required') && enquiryForm.get('details').touched">
         Details are <strong>required</strong>
       </mat-error>
     </mat-form-field>
+
   </div>
   <mat-dialog-actions align="end">
     <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>

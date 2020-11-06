@@ -24,3 +24,11 @@ html, body, material-app, mat-sidenav-container, .my-content {
   width: 100%;
   height: 100%;
 }
+a, button, button:focus{
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+}
+*{
+  outline: none;
+}

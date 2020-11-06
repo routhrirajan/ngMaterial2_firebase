@@ -27,9 +27,9 @@
         </ng-container>
 
         <!-- Position Column -->
-        <ng-container matColumnDef="uid">
+        <ng-container matColumnDef="aid">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.uid}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.aid}} </mat-cell>
         </ng-container>
 
         <!-- Position Column -->
@@ -38,8 +38,19 @@
             <mat-cell *matCellDef="let element"> {{element.pan}} </mat-cell>
         </ng-container>
 
+         <!-- Action Column -->
+        <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <mat-radio-group>
+                    <mat-radio-button value="1">Retailer</mat-radio-button>
+                    <mat-radio-button value="2">Distributor</mat-radio-button>
+                  </mat-radio-group> 
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
