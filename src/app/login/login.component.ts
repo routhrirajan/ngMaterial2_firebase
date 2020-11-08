@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   };
 
   constructor(
-    public dialogRef: MatDialogRef<LoginComponent>,
+    public loginDialogRef: MatDialogRef<LoginComponent>,
     private fb: FormBuilder,
     private auth: AuthenticationService,
     private _router: Router

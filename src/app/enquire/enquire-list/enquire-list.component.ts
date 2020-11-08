@@ -16,7 +16,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class EnquireListComponent implements OnInit {
     enquiries: Observable<IEnquireUser[]>;
-    displayedColumns: string[] = ['fullName', 'email', 'mobile', 'aid', 'pan','action'];
+    displayedColumns: string[] = ['fullName', 'email', 'mobile', 'aid', 'pan','role','activate'];
     
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -39,6 +39,7 @@ export class EnquireListComponent implements OnInit {
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        console.log(this.dataSource);
       }
 
     ngOnDestroy() {
@@ -54,9 +55,9 @@ export class EnquireListComponent implements OnInit {
         }
     }
 
-    CreateUser(email: string) {
+    CreateUser(row?:IEnquireUser) {
         const password = this.randomPassword(6);
-        this._userService.emailSignUp(email, password);
+        this._userService.emailSignUp(row, password);
     }
     randomPassword(length: number): string {
         const chars = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890';

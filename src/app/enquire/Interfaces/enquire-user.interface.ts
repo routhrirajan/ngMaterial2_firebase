@@ -1,7 +1,7 @@
 export interface IEnquireUser {
     fullName: string,
     email: string,
-    mobile: number,
+    mobile: string,
     aid:number,
     pan:string,
     role: string,

@@ -1,5 +1,5 @@
 <h3>Fill in your login credentials to use our services..</h3>
-<form [formGroup]="userForm" (ngSubmit)="dialogRef.close(userForm)">
+<form [formGroup]="userForm" (ngSubmit)="loginDialogRef.close(userForm)">
   <div fxLayout="column" fxLayoutGap="8px">
     <mat-form-field>
       <input matInput #email type="text" formControlName="email">

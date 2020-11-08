@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnquireComponent, EnquiryService } from 'app/enquire';
 import { LoginComponent } from 'app/login';
@@ -19,7 +19,7 @@ export class NavbarComponent {
 toggleSidebarStatus = false;
 isLoggedIn = false;
   constructor(
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private router: Router,
     private enquireDialog: MatDialog,
     private loginDialog: MatDialog,

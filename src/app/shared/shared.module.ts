@@ -17,7 +17,6 @@ import {
   MatSidenavModule,
   MatListModule,
   MatMenuModule,
-  MatDialogModule,
   MatInputModule,
   MatToolbarModule,
   MatCardModule,
@@ -31,6 +30,7 @@ import {
   MatRadioGroup,
   MatRadioButton
        } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';

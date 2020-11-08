@@ -1,6 +1,6 @@
 <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Vaithi" #input>
   </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -8,45 +8,53 @@
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-        <!-- Position Column -->
+        <!-- FullName Column -->
         <ng-container matColumnDef="fullName">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.fullName}} </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
+        <!-- Email Column -->
         <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
+        <!-- Mobile Column -->
         <ng-container matColumnDef="mobile">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
+        <!-- Aadhar Column -->
         <ng-container matColumnDef="aid">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar No. </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.aid}} </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
+        <!-- PAN Column -->
         <ng-container matColumnDef="pan">
             <mat-header-cell *matHeaderCellDef mat-sort-header> PAN No. </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.pan}} </mat-cell>
         </ng-container>
 
-         <!-- Action Column -->
+         <!-- Role Column -->
         <ng-container matColumnDef="role">
             <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
             <mat-cell *matCellDef="let element"> 
                 <mat-radio-group>
-                    <mat-radio-button value="1">Retailer</mat-radio-button>
-                    <mat-radio-button value="2">Distributor</mat-radio-button>
+                    <mat-radio-button [checked]="element.role === 'Retailer'" value="Retailer">Retailer</mat-radio-button>
+                    <mat-radio-button [checked]="element.role === 'Distributor'" value="Distributor">Distributor</mat-radio-button>
                   </mat-radio-group> 
             </mat-cell>
+        </ng-container>
+
+        <!-- Activate Column -->
+        <ng-container matColumnDef="activate">
+            <mat-header-cell *matHeaderCellDef> Activate User </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button type="button" mat-button isIconButton="true" color="accent" (click)="CreateUser(element)"><mat-icon>how_to_reg</mat-icon> Activate</button>
+            </mat-cell> 
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -11,19 +11,28 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IUser } from 'app/login/user.interface';
 import { MatSnackBar } from '@angular/material';
+import { IEnquireUser } from 'app/enquire';
 
 
 @Injectable()
 export class AuthenticationService {
 
   user: Observable<IUser | null>;
+  actionCodeSettings = {
+    // The URL to redirect to for sign-in completion. This is also the deep
+    // link for mobile redirects. The domain (www.example.com) for this URL
+    // must be whitelisted in the Firebase Console.
+    url: 'https://digitalsevai.com',
+    // This must be true.
+    handleCodeInApp: true
+  };
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
     private snackBar: MatSnackBar,
     private notify: NotifyService) {
-      afs.firestore.settings({ timestampsInSnapshots: true });
+      //afs.firestore.settings({ timestampsInSnapshots: true });
       this.user = this.afAuth.authState.pipe(
         switchMap(user => {
           if (user) {
@@ -79,12 +88,24 @@ export class AuthenticationService {
   }
 
   //// Email/Password Auth ////
-  emailSignUp(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+  emailSignUp(row:IEnquireUser, password: string) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(row.email, password)
       .then((user) => {
-        this.verifyEmail(user);
+        debugger;
+        //this.resetPassword(user.user.email);
         this.snackBar.open('User Created', 'Close' );
-        return this.updateUserData(user.user); // if using firestore
+        const newUser:IUser ={
+          uid: user.user.uid,
+          email: user.user.email,
+          displayName: row.fullName,
+          role: row.role,
+          phoneNumber: row.mobile,
+          aid: row.aid,
+          pan: row.pan
+        }
+        
+        return this.updateUserData(newUser); // if using firestore
+        
       })
       .catch((error) => this.handleError(error));
   }
@@ -93,17 +114,26 @@ export class AuthenticationService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         this.snackBar.open('Login Success', 'Close' );
-        return this.updateUserData(user.user); // if using firestore
+        return user.user; // if using firestore
       })
       .catch((error) => this.handleError(error));
   }
   // Sends email verification
   verifyEmail(user) {
-    user.sendEmailVerification().then(function () {
-      // Email sent.
-    }).catch(function (error) {
-      // An error happened.
+    this.afAuth.auth.sendSignInLinkToEmail(user.user.email, this.actionCodeSettings)
+    .then(function() {
+      // The link was successfully sent. Inform the user. Save the email
+      // locally so you don't need to ask the user for it again if they open
+      // the link on the same device.
+    })
+    .catch(function(error) {
+      // Some error occurred, you can inspect the code: error.code
     });
+    // user.sendEmailVerification().then(function () {
+    //   // Email sent.
+    // }).catch(function (error) {
+    //   // An error happened.
+    // });
   }
   // Sends email allowing user to reset password
   resetPassword(email: string) {
@@ -130,13 +160,18 @@ export class AuthenticationService {
   // Sets user data to firestore after succesful login
   private updateUserData(user: IUser) {
 
+    debugger;
     const userRef: AngularFirestoreDocument<IUser> = this.afs.doc(`users/${user.uid}`);
 
     const data: IUser = {
       uid: user.uid,
       email: user.email || null,
       displayName: user.displayName || 'nameless user',
-      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ'
+      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ',
+      role: user.role,
+      aid: user.aid,
+      pan: user.pan,
+      phoneNumber: user.phoneNumber
     };
     return userRef.set(data);
   }
